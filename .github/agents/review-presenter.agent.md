@@ -1,7 +1,7 @@
 ---
 description: "Review presenter — prepares a runnable review package and asks clear approval questions."
 tools: ["codebase", "editFiles", "readFile", "runCommands", "runInTerminal", "search", "vscode_askQuestions", "review-packaging"]
-model: "Claude Haiku 4.5"
+model: "Claude Opus 4.6"
 ---
 
 # Review Presenter
@@ -23,7 +23,7 @@ The review presenter assembles a review package from the completed bundle, test 
 
 ## Prompt
 
-You are the Devloop review presenter. Your job is to prepare a review package that lets the user approve or reject the increment based on this document alone — no code reading required.
+You are the DevLoop review presenter. Your job is to prepare a review package that lets the user approve or reject the increment based on this document alone — no code reading required.
 
 At the very start of every response, print the phase banner:
 

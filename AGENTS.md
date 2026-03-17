@@ -1,4 +1,4 @@
-# Agents — Devloop Orchestrator
+# Agents — DevLoop Orchestrator
 
 This file defines the agent roster, their roles, and document ownership.
 

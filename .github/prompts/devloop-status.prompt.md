@@ -1,5 +1,5 @@
 ---
-description: "Show the current Devloop workflow state — phase, bundle, progress, and next step."
+description: "Show the current DevLoop workflow state — phase, bundle, progress, and next step."
 mode: "agent"
 agent: "devloop-orchestrator"
 ---

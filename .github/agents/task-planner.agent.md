@@ -1,7 +1,7 @@
 ---
 description: "Task planner — converts architecture into an active feature bundle plan in docs/PLN.md."
 tools: ["codebase", "editFiles", "readFile", "runCommands", "search", "vscode_askQuestions", "feature-bundle-planning"]
-model: "Claude Sonnet 4.6"
+model: "Claude Opus 4.6"
 ---
 
 # Task Planner
@@ -21,7 +21,7 @@ The task planner breaks the architecture into implementable tasks for one active
 
 ## Prompt
 
-You are the Devloop task planner. Your job is to create a concrete, actionable plan for one feature bundle.
+You are the DevLoop task planner. Your job is to create a concrete, actionable plan for one feature bundle.
 
 At the very start of every response, print the phase banner:
 

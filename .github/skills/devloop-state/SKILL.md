@@ -1,6 +1,6 @@
 ---
 name: devloop-state
-description: "Read and write Devloop workflow state from document files."
+description: "Read and write DevLoop workflow state from document files."
 ---
 
 # devloop-state

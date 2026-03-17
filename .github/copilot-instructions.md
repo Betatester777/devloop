@@ -1,6 +1,6 @@
-# Copilot Instructions — Devloop Orchestrator
+# Copilot Instructions — DevLoop Orchestrator
 
-This repository uses the **Devloop** workflow: a document-driven, phase-gated agentic software process that produces small, testable, executable increments.
+This repository uses the **DevLoop** workflow: a document-driven, phase-gated agentic software process that produces small, testable, executable increments.
 
 ## Core rule
 

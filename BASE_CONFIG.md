@@ -1,4 +1,4 @@
-# Base Configuration — Devloop Orchestrator
+# Base Configuration — DevLoop Orchestrator
 
 ## Stack
 

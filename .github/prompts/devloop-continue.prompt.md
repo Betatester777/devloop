@@ -1,12 +1,12 @@
 ---
-description: "Resume the Devloop workflow from the current state."
+description: "Resume the DevLoop workflow from the current state."
 mode: "agent"
 agent: "devloop-orchestrator"
 ---
 
 # Continue workflow
 
-The user wants to resume the Devloop workflow.
+The user wants to resume the DevLoop workflow.
 
 1. Read `docs/STATE.md` to determine the current phase and active bundle.
 2. If `docs/STATE.md` does not exist, infer the phase from which workflow documents are present.

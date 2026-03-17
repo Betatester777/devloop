@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevLoop — How It Works</title>
+<style>
+  :root {
+    --bg: #F8F6F2;
+    --primary: #FFFFFF;
+    --border: #00A459;
+    --text: #4A4A4A;
+    --line: #9AA3A8;
+    --secondary: #FFFFFF;
+    --tertiary: #F8F6F2;
+    --font: Arial, Helvetica, sans-serif;
+    --accent: #00A459;
+    --accent-light: #E6F7EE;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  /* ── Slide container ── */
+  .deck {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 80px;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  .slide.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .slide-inner {
+    max-width: 1400px;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  /* ── Typography ── */
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  h1 .green { color: var(--accent); }
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 36px;
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 8px;
+    display: inline-block;
+  }
+
+  h3 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 24px 0 12px;
+  }
+
+  p, li {
+    font-size: 1.375rem;
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  .subtitle {
+    font-size: 1.625rem;
+    color: var(--line);
+    margin-bottom: 48px;
+  }
+
+  ul { margin-left: 29px; margin-bottom: 19px; }
+  li { margin-bottom: 7px; }
+  li::marker { color: var(--accent); }
+
+  strong { color: #333; }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 29px 0;
+    font-size: 1.25rem;
+  }
+  th {
+    background: var(--accent);
+    color: #fff;
+    text-align: left;
+    padding: 12px 19px;
+    font-weight: 600;
+  }
+  th:first-child { border-radius: 6px 0 0 0; }
+  th:last-child  { border-radius: 0 6px 0 0; }
+  td {
+    padding: 12px 19px;
+    border-bottom: 1px solid #E0E0E0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #fff; }
+  tr:nth-child(odd)  td { background: var(--bg); }
+  tr:last-child td:first-child { border-radius: 0 0 0 6px; }
+  tr:last-child td:last-child  { border-radius: 0 0 6px 0; }
+
+  /* ── SVG diagram wrappers ── */
+  .diagram {
+    display: flex;
+    justify-content: center;
+    margin: 36px 0;
+  }
+  .diagram svg {
+    max-width: 100%;
+    height: auto;
+    transform: scale(1.25);
+    transform-origin: top center;
+  }
+
+  /* ── Two-column layout ── */
+  .columns {
+    display: flex;
+    gap: 77px;
+    align-items: flex-start;
+  }
+  .columns > * { flex: 1; }
+
+  /* ── Callout box ── */
+  .callout {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 26px 31px;
+    border-radius: 0 8px 8px 0;
+    margin: 31px 0 0;
+    font-size: 1.3rem;
+  }
+
+  /* ── Navigation ── */
+  .nav {
+    position: fixed;
+    bottom: 24px;
+    right: 32px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    z-index: 10;
+  }
+  .nav button {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: var(--primary);
+    color: var(--accent);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav button:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+  .nav button:disabled {
+    opacity: 0.3;
+    cursor: default;
+    background: var(--primary);
+    color: var(--line);
+    border-color: var(--line);
+  }
+  .nav .counter {
+    font-size: 1.1rem;
+    color: var(--line);
+    min-width: 48px;
+    text-align: center;
+  }
+
+  /* ── Progress bar ── */
+  .progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 4px;
+    background: var(--accent);
+    transition: width 0.35s ease;
+    z-index: 10;
+  }
+
+  @media print {
+    @page {
+      size: A4 landscape;
+      margin: 8mm;
+    }
+
+    body {
+      overflow: visible;
+      background: #fff;
+    }
+
+    .deck {
+      width: auto;
+      height: auto;
+    }
+
+    .slide {
+      position: relative;
+      inset: auto;
+      display: flex !important;
+      opacity: 1 !important;
+      min-height: 178mm;
+      padding: 16px 18px;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .slide:last-of-type {
+      page-break-after: auto;
+      break-after: auto;
+    }
+
+    .slide-inner {
+      max-width: none;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      padding-bottom: 6px;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      margin: 12px 0 8px;
+    }
+
+    p, li {
+      font-size: 0.96rem;
+      line-height: 1.45;
+    }
+
+    .subtitle {
+      font-size: 1.08rem;
+      margin-bottom: 18px;
+    }
+
+    ul {
+      margin-left: 18px;
+      margin-bottom: 10px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    table {
+      margin: 12px 0;
+      font-size: 0.88rem;
+    }
+
+    th, td {
+      padding: 7px 10px;
+    }
+
+    .diagram {
+      margin: 14px 0;
+    }
+
+    .diagram svg {
+      transform: none;
+      max-width: 100%;
+      max-height: 110mm;
+    }
+
+    .columns {
+      gap: 26px;
+    }
+
+    .callout {
+      font-size: 0.92rem;
+      padding: 12px 14px;
+      margin: 14px 0 0;
+    }
+
+    .progress,
+    .nav {
+      display: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+<!-- ════════════════════════ SLIDE 1 — Title ════════════════════════ -->
+<section class="slide active">
+<div class="slide-inner" style="text-align:center;">
+  <div class="diagram">
+    <svg width="120" height="120" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="56" fill="#E6F7EE" stroke="#00A459" stroke-width="3"/>
+      <text x="60" y="50" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#00A459">♻</text>
+      <!-- Cycle arrows -->
+      <path d="M 38 35 A 30 30 0 0 1 82 35" fill="none" stroke="#00A459" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrowTitle)"/>
+      <path d="M 82 85 A 30 30 0 0 1 38 85" fill="none" stroke="#00A459" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrowTitle)"/>
+      <text x="60" y="67" text-anchor="middle" font-family="Arial" font-size="28">🔄</text>
+      <defs><marker id="arrowTitle" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#00A459"/></marker></defs>
+    </svg>
+  </div>
+
+  <h1><span class="green">DevLoop</span> — agentic software engineering workflow</h1>
+  <p class="subtitle">A brief introduction to DevLoop — a proof-of-concept for agentic software engineering workflow with focus on sustainability, efficiency, and traceability.</p>
+  <p style="color:#9AA3A8; font-size:1.1rem; margin-bottom:24px;">Author: Ingo Dering, TEMI, 17.03.2026</p>
+  <div class="diagram">
+    <svg width="620" height="80" viewBox="0 0 620 80">
+      <rect x="0" y="20" width="620" height="40" rx="20" fill="#E6F7EE" stroke="#00A459" stroke-width="2"/>
+      <text x="310" y="46" text-anchor="middle" font-family="Arial" font-size="16" fill="#4A4A4A">🧩 Small steps · ✅ Verified quality · 🔗 Full traceability</text>
+    </svg>
+  </div>
+  <p style="color:#9AA3A8; margin-top:40px; font-size:0.95rem;">Use ← → arrow keys or buttons to navigate</p>
+</div>
+</section>
+
+<!-- ════════════════════════ SLIDE 2 — What Is DevLoop? ════════════════════════ -->
+<section class="slide">
+<div class="slide-inner">
+  <h2>🎯 What Is DevLoop?</h2>
+  <p>DevLoop is an <strong>agentic software engineering workflow prototype</strong> that turns software delivery into a controlled, step-by-step process.</p>
+  <br>
+  <div class="columns">
+    <div>
+      <h3>❌ Instead of…</h3>
+      <ul>
+        <li>🎲 Writing all code at once and hoping it works</li>
+        <li>📢 Manual handoffs between team members</li>
+        <li>🐛 Discovering problems late in the process</li>
+      </ul>
+    </div>
+    <div>
+      <h3>✅ DevLoop provides…</h3>
+      <ul>
+        <li>🧩 Manageable pieces tested against requirements</li>
+        <li>📋 Automated, document-driven handoffs</li>
+        <li>🛡️ Quality checks at every transition</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    🏭 <strong>Think of it as a software assembly line</strong> — each stage has a specialist, a defined handoff, and a quality check before the next stage can begin.
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════ SLIDE 3 — Phase Workflow ════════════════════════ -->
+<section class="slide">
+<div class="slide-inner">
+  <h2>🔄 The Development Phases</h2>
+  <p>Each feature moves through <strong>7 fixed phases</strong>. The workflow only advances when the current phase has been completed and checked.</p>
+  <div class="diagram">
+    <svg width="900" height="380" viewBox="0 0 900 380">
+      <!-- Phase boxes -->
+      <g>
+        <!-- 1. Requirements -->
+        <rect x="20" y="10" width="200" height="60" rx="10" fill="#FFFFFF" stroke="#00A459" stroke-width="2"/>
+        <text x="50" y="46" font-family="Arial" font-size="22">📋</text>
+        <text x="130" y="46" text-anchor="middle" font-family="Arial" font-size="14" fill="#4A4A4A">Requirements</text>
+
+        <!-- 2. Architecture -->
+        <rect x="20" y="90" width="200" height="60" rx="10" fill="#FFFFFF" stroke="#00A459" stroke-width="2"/>
+        <text x="50" y="126" font-family="Arial" font-size="22">🏗️</text>
+        <text x="130" y="126" text-anchor="middle" font-family="Arial" font-size="14" fill="#4A4A4A">Architecture</text>
+
+        <!-- 3. Planning -->
+        <rect x="20" y="170" width="200" height="60" rx="10" fill="#FFFFFF" stroke="#00A459" stroke-width="2"/>
+        <text x="50" y="206" font-family="Arial" font-size="22">📐</text>
+        <text x="130" y="206" text-anchor="middle" font-family="Arial" font-size="14" fill="#4A4A4A">Planning</text>
+
+        <!-- 4. Build -->
+        <rect x="20" y="250" width="200" height="60" rx="10" fill="#FFFFFF" stroke="#00A459" stroke-width="2"/>
+        <text x="50" y="286" font-family="Arial" font-size="22">💻</text>
+        <text x="130" y="286" text-anchor="middle" font-family="Arial" font-size="14" fill="#4A4A4A">Build</text>
+
+        <!-- Arrows down left column -->
+        <line x1="120" y1="70" x2="120" y2="90" stroke="#9AA3A8" stroke-width="2" marker-end="url(#arrowGray)"/>
+        <line x1="120" y1="150" x2="120" y2="170" stroke="#9AA3A8" stroke-width="2" marker-end="url(#arrowGray)"/>
+        <line x1="120" y1="230" x2="120" y2="250" stroke="#9AA3A8" stroke-width="2" marker-end="url(#arrowGray)"/>
+      </g>
+
+      <g>
+        <!-- 5. Testing -->
+        <rect x="350" y="250" width="200" height="60" rx="10" fill="#FFFFFF" stroke="#00A459" stroke-width="2"/>
+        <text x="380" y="286" font-family="Arial" font-size="22">🧪</text>
+        <text x="460" y="286" text-anchor="middle" font-family="Arial" font-size="14" fill="#4A4A4A">Testing</text>
+
+        <!-- 6. Review -->
+        <rect x="350" y="170" width="200" height="60" rx="10" fill="#FFFFFF" stroke="#00A459" stroke-width="2"/>
+        <text x="380" y="206" font-family="Arial" font-size="22">🔍</text>
+        <text x="460" y="206" text-anchor="middle" font-family="Arial" font-size="14" fill="#4A4A4A">Review</text>
+
+        <!-- 7. Release -->
+        <rect x="350" y="90" width="200" height="60" rx="10" fill="#FFFFFF" stroke="#00A459" stroke-width="2"/>
+        <text x="380" y="126" font-family="Arial" font-size="22">📦</text>
+        <text x="460" y="126" text-anchor="middle" font-family="Arial" font-size="14" fill="#4A4A4A">Release</text>
+
+        <!-- Arrow Build → Testing -->
+        <line x1="220" y1="280" x2="350" y2="280" stroke="#9AA3A8" stroke-width="2" marker-end="url(#arrowGray)"/>
+        <!-- Arrow Testing → Review -->
+        <line x1="450" y1="250" x2="450" y2="230" stroke="#9AA3A8" stroke-width="2" marker-end="url(#arrowGray)"/>
+        <!-- Arrow Review → Release -->
+        <line x1="450" y1="170" x2="450" y2="150" stroke="#9AA3A8" stroke-width="2" marker-end="url(#arrowGray)"/>
+      </g>
+
+      <!-- Retry loop: Testing → Build -->
+      <path d="M 355 305 C 280 340, 230 340, 215 305" fill="none" stroke="#E8833A" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowOrange)"/>
+      <text x="285" y="355" text-anchor="middle" font-family="Arial" font-size="12" fill="#E8833A">Retry (max 3×)</text>
+
+      <!-- Descriptions on right side -->
+      <g font-family="Arial" font-size="12" fill="#9AA3A8">
+        <text x="600" y="35">📝 Define what to build</text>
+        <text x="600" y="115">🧱 Design the approach</text>
+        <text x="600" y="195">📊 Break into tasks</text>
+        <text x="600" y="275">⌨️ Write code &amp; tests</text>
+        <text x="600" y="295" dy="20">✔️ Verify against requirements</text>
+        <text x="600" y="215" dy="20">👁️ Human approval</text>
+        <text x="600" y="135" dy="20">🚀 Package &amp; deliver</text>
+      </g>
+
+      <!-- Arrow markers -->
+      <defs>
+        <marker id="arrowGray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#9AA3A8"/>
+        </marker>
+        <marker id="arrowOrange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#E8833A"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════ SLIDE 4 — Phase Details ════════════════════════ -->
+<section class="slide">
+<div class="slide-inner">
+  <h2>📖 What Happens in Each Phase</h2>
+  <table>
+    <thead><tr><th>Phase</th><th>What happens</th><th>Key output</th></tr></thead>
+    <tbody>
+      <tr><td>📋 <strong>Requirements</strong></td><td>User needs are captured and organized into feature groups with clear acceptance criteria</td><td>Product Requirements Document</td></tr>
+      <tr><td>🏗️ <strong>Architecture</strong></td><td>Technical design — components, connections, and risks</td><td>Architecture Document</td></tr>
+      <tr><td>📐 <strong>Planning</strong></td><td>One feature group is broken into concrete tasks with dependencies</td><td>Task Plan</td></tr>
+      <tr><td>💻 <strong>Build</strong></td><td>Code is written along with automated tests</td><td>Source code and test files</td></tr>
+      <tr><td>🧪 <strong>Testing</strong></td><td>Tests verify the code meets every acceptance criterion</td><td>Test Report</td></tr>
+      <tr><td>🔍 <strong>Review</strong></td><td>Summary presented for human approval</td><td>Review Package</td></tr>
+      <tr><td>📦 <strong>Release</strong></td><td>Approved increment is versioned and packaged</td><td>Release Notes and archive</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">🔁 If testing finds a problem, the workflow returns to Build for correction — up to <strong>3 times</strong> before a human is asked to step in.</div>
+</div>
+</section>
+
+<!-- ════════════════════════ SLIDE 5 — Team of Specialists ════════════════════════ -->
+<section class="slide">
+<div class="slide-inner">
+  <h2>🤖 The Team of Specialists</h2>
+  <p>Eight AI specialists participate in the workflow. Each one has a clearly defined responsibility and produces a specific output.</p>
+  <div class="diagram">
+    <svg width="800" height="380" viewBox="0 0 800 380">
+      <!-- Orchestrator (center) -->
+      <circle cx="400" cy="190" r="65" fill="#E6F7EE" stroke="#00A459" stroke-width="2.5"/>
+      <text x="400" y="172" text-anchor="middle" font-family="Arial" font-size="30">🎯</text>
+      <text x="400" y="196" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#00A459">Orchestrator</text>
+      <text x="400" y="214" text-anchor="middle" font-family="Arial" font-size="13" fill="#9AA3A8">manages flow</text>
+
+      <!-- Specialists around the orchestrator -->
+      <!-- Product Manager (top-left) -->
+      <rect x="45" y="15" width="175" height="60" rx="8" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="58" y="50" font-family="Arial" font-size="20">📋</text>
+      <text x="140" y="42" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#4A4A4A">Product Manager</text>
+      <text x="140" y="62" text-anchor="middle" font-family="Arial" font-size="13" fill="#9AA3A8">requirements</text>
+      <line x1="220" y1="68" x2="348" y2="148" stroke="#9AA3A8" stroke-width="1.5"/>
+
+      <!-- Architect (top) -->
+      <rect x="313" y="15" width="175" height="60" rx="8" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="323" y="50" font-family="Arial" font-size="20">🏗️</text>
+      <text x="400" y="42" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#4A4A4A">Architect</text>
+      <text x="400" y="62" text-anchor="middle" font-family="Arial" font-size="13" fill="#9AA3A8">design</text>
+      <line x1="400" y1="75" x2="400" y2="125" stroke="#9AA3A8" stroke-width="1.5"/>
+
+      <!-- Task Planner (top-right) -->
+      <rect x="580" y="15" width="175" height="60" rx="8" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="590" y="50" font-family="Arial" font-size="20">📐</text>
+      <text x="668" y="42" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#4A4A4A">Task Planner</text>
+      <text x="668" y="62" text-anchor="middle" font-family="Arial" font-size="13" fill="#9AA3A8">task plan</text>
+      <line x1="585" y1="68" x2="452" y2="148" stroke="#9AA3A8" stroke-width="1.5"/>
+
+      <!-- Developer (left) -->
+      <rect x="10" y="160" width="175" height="60" rx="8" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="22" y="196" font-family="Arial" font-size="20">💻</text>
+      <text x="105" y="187" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#4A4A4A">Developer</text>
+      <text x="105" y="207" text-anchor="middle" font-family="Arial" font-size="13" fill="#9AA3A8">code &amp; tests</text>
+      <line x1="185" y1="190" x2="335" y2="190" stroke="#9AA3A8" stroke-width="1.5"/>
+
+      <!-- Tester (right) -->
+      <rect x="615" y="160" width="175" height="60" rx="8" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="627" y="196" font-family="Arial" font-size="20">🧪</text>
+      <text x="710" y="187" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#4A4A4A">Tester</text>
+      <text x="710" y="207" text-anchor="middle" font-family="Arial" font-size="13" fill="#9AA3A8">verification</text>
+      <line x1="615" y1="190" x2="465" y2="190" stroke="#9AA3A8" stroke-width="1.5"/>
+
+      <!-- Review Presenter (bottom-left) -->
+      <rect x="45" y="300" width="175" height="60" rx="8" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="58" y="336" font-family="Arial" font-size="20">🔍</text>
+      <text x="140" y="326" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#4A4A4A">Reviewer</text>
+      <text x="140" y="348" text-anchor="middle" font-family="Arial" font-size="13" fill="#9AA3A8">approval package</text>
+      <line x1="220" y1="308" x2="348" y2="238" stroke="#9AA3A8" stroke-width="1.5"/>
+
+      <!-- Release Manager (bottom-right) -->
+      <rect x="580" y="300" width="175" height="60" rx="8" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="590" y="336" font-family="Arial" font-size="20">📦</text>
+      <text x="668" y="326" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#4A4A4A">Release Manager</text>
+      <text x="668" y="348" text-anchor="middle" font-family="Arial" font-size="13" fill="#9AA3A8">delivery</text>
+      <line x1="585" y1="308" x2="452" y2="238" stroke="#9AA3A8" stroke-width="1.5"/>
+    </svg>
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════ SLIDE 6 — Communication ════════════════════════ -->
+<section class="slide">
+<div class="slide-inner">
+  <h2>💬 How Specialists Communicate</h2>
+  <p>Specialists do <strong>not</strong> hand work to each other informally. They communicate through documents, and the Orchestrator checks those handoffs before work continues.</p>
+  <div class="diagram">
+    <svg width="820" height="250" viewBox="0 0 820 250">
+      <!-- Specialist A -->
+      <rect x="10" y="70" width="160" height="70" rx="8" fill="#FFF" stroke="#00A459" stroke-width="2"/>
+      <text x="24" y="105" font-family="Arial" font-size="22">🤖</text>
+      <text x="100" y="100" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#4A4A4A">Specialist A</text>
+      <text x="100" y="120" text-anchor="middle" font-family="Arial" font-size="13" fill="#9AA3A8">produces document</text>
+
+      <!-- Document -->
+      <rect x="240" y="62" width="130" height="86" rx="4" fill="#E6F7EE" stroke="#00A459" stroke-width="1.5"/>
+      <text x="305" y="98" text-anchor="middle" font-family="Arial" font-size="28">📄</text>
+      <text x="305" y="132" text-anchor="middle" font-family="Arial" font-size="13" fill="#00A459" font-weight="bold">Document</text>
+
+      <!-- Orchestrator check -->
+      <rect x="440" y="55" width="160" height="100" rx="10" fill="#E6F7EE" stroke="#00A459" stroke-width="2.5"/>
+      <text x="520" y="95" text-anchor="middle" font-family="Arial" font-size="26">✓</text>
+      <text x="520" y="120" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#00A459">Orchestrator</text>
+      <text x="520" y="140" text-anchor="middle" font-family="Arial" font-size="13" fill="#9AA3A8">validates quality</text>
+
+      <!-- Specialist B -->
+      <rect x="670" y="70" width="140" height="70" rx="8" fill="#FFF" stroke="#00A459" stroke-width="2"/>
+      <text x="682" y="105" font-family="Arial" font-size="22">🤖</text>
+      <text x="750" y="100" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#4A4A4A">Specialist B</text>
+      <text x="750" y="120" text-anchor="middle" font-family="Arial" font-size="13" fill="#9AA3A8">reads &amp; continues</text>
+
+      <!-- Arrows -->
+      <line x1="170" y1="105" x2="238" y2="105" stroke="#9AA3A8" stroke-width="2" marker-end="url(#arrowG2)"/>
+      <line x1="370" y1="105" x2="438" y2="105" stroke="#9AA3A8" stroke-width="2" marker-end="url(#arrowG2)"/>
+      <line x1="600" y1="105" x2="668" y2="105" stroke="#9AA3A8" stroke-width="2" marker-end="url(#arrowG2)"/>
+
+      <!-- Labels -->
+      <text x="200" y="93" text-anchor="middle" font-family="Arial" font-size="13" fill="#9AA3A8">writes</text>
+      <text x="404" y="93" text-anchor="middle" font-family="Arial" font-size="13" fill="#9AA3A8">checks</text>
+      <text x="634" y="93" text-anchor="middle" font-family="Arial" font-size="13" fill="#9AA3A8">handoff</text>
+
+      <!-- Bottom text -->
+      <text x="410" y="200" text-anchor="middle" font-family="Arial" font-size="15" fill="#4A4A4A">Every decision, requirement, and test result is recorded — nothing is lost.</text>
+      <text x="410" y="225" text-anchor="middle" font-family="Arial" font-size="14" fill="#9AA3A8">Each specialist can read earlier documents but can only modify its own.</text>
+
+      <defs>
+        <marker id="arrowG2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#9AA3A8"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+  <div class="callout">This document-driven approach creates a <strong>clear audit trail</strong> — every handoff is visible, checked, and recorded.</div>
+</div>
+</section>
+
+<!-- ════════════════════════ SLIDE 7 — Quality Gates ════════════════════════ -->
+<section class="slide">
+<div class="slide-inner">
+  <h2>🛡️ Quality Gates</h2>
+  <p>These are non-negotiable checkpoints that stop incomplete or low-quality work from moving to the next phase.</p>
+  <div class="diagram">
+    <svg width="820" height="180" viewBox="0 0 820 180">
+      <!-- Gate 1: Readiness -->
+      <rect x="10" y="30" width="170" height="100" rx="10" fill="#FFF" stroke="#00A459" stroke-width="2"/>
+      <circle cx="95" cy="55" r="16" fill="#E6F7EE" stroke="#00A459" stroke-width="1.5"/>
+      <text x="95" y="60" text-anchor="middle" font-family="Arial" font-size="16">📝</text>
+      <text x="95" y="85" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#4A4A4A">Readiness</text>
+      <text x="95" y="102" text-anchor="middle" font-family="Arial" font-size="10" fill="#9AA3A8">Scope + criteria</text>
+      <text x="95" y="116" text-anchor="middle" font-family="Arial" font-size="10" fill="#9AA3A8">+ dependencies</text>
+
+      <!-- Arrow -->
+      <line x1="180" y1="80" x2="215" y2="80" stroke="#00A459" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+      <!-- Gate 2: Pass -->
+      <rect x="220" y="30" width="170" height="100" rx="10" fill="#FFF" stroke="#00A459" stroke-width="2"/>
+      <circle cx="305" cy="55" r="16" fill="#E6F7EE" stroke="#00A459" stroke-width="1.5"/>
+      <text x="305" y="60" text-anchor="middle" font-family="Arial" font-size="16">✅</text>
+      <text x="305" y="85" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#4A4A4A">Pass</text>
+      <text x="305" y="102" text-anchor="middle" font-family="Arial" font-size="10" fill="#9AA3A8">Build ✓ Tests ✓</text>
+      <text x="305" y="116" text-anchor="middle" font-family="Arial" font-size="10" fill="#9AA3A8">Style standards ✓</text>
+
+      <!-- Arrow -->
+      <line x1="390" y1="80" x2="425" y2="80" stroke="#00A459" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+      <!-- Gate 3: Acceptance -->
+      <rect x="430" y="30" width="170" height="100" rx="10" fill="#FFF" stroke="#00A459" stroke-width="2"/>
+      <circle cx="515" cy="55" r="16" fill="#E6F7EE" stroke="#00A459" stroke-width="1.5"/>
+      <text x="515" y="60" text-anchor="middle" font-family="Arial" font-size="16">👤</text>
+      <text x="515" y="85" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#4A4A4A">Acceptance</text>
+      <text x="515" y="102" text-anchor="middle" font-family="Arial" font-size="10" fill="#9AA3A8">Human reviewed</text>
+      <text x="515" y="116" text-anchor="middle" font-family="Arial" font-size="10" fill="#9AA3A8">&amp; approved</text>
+
+      <!-- Arrow -->
+      <line x1="600" y1="80" x2="635" y2="80" stroke="#00A459" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+      <!-- Gate 4: Release -->
+      <rect x="640" y="30" width="170" height="100" rx="10" fill="#FFF" stroke="#00A459" stroke-width="2"/>
+      <circle cx="725" cy="55" r="16" fill="#E6F7EE" stroke="#00A459" stroke-width="1.5"/>
+      <text x="725" y="60" text-anchor="middle" font-family="Arial" font-size="16">🚀</text>
+      <text x="725" y="85" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#4A4A4A">Release</text>
+      <text x="725" y="102" text-anchor="middle" font-family="Arial" font-size="10" fill="#9AA3A8">Notes + traceability</text>
+      <text x="725" y="116" text-anchor="middle" font-family="Arial" font-size="10" fill="#9AA3A8">+ packaged archive</text>
+
+      <!-- Bottom note -->
+      <text x="410" y="165" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A4A4A">If any gate fails, work returns for correction — it never proceeds with known deficiencies.</text>
+
+      <defs>
+        <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#00A459"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════ SLIDE 8 — Requirements ════════════════════════ -->
+<section class="slide">
+<div class="slide-inner">
+  <h2>📌 Requirements Management</h2>
+  <p>Requirements are the foundation of the workflow. Every planned task, test case, and code change must trace back to a specific requirement.</p>
+  <div class="columns">
+    <div>
+      <h3>Two-level structure</h3>
+      <ul>
+        <li><strong>Feature Groups</strong> — high-level capabilities<br><span style="color:#9AA3A8; font-size:0.9rem;">e.g. "Card-based gameplay", "Score system"</span></li>
+        <li><strong>Acceptance Criteria</strong> — specific, testable outcomes<br><span style="color:#9AA3A8; font-size:0.9rem;">e.g. "Matched pairs stay revealed on the board"</span></li>
+      </ul>
+      <h3>Protective rules</h3>
+      <ul>
+        <li>Identifiers are <strong>assigned once, never reused</strong></li>
+        <li>Retired items are <strong>marked, never deleted</strong></li>
+        <li>Every criterion must have a task, a test, and a code change</li>
+      </ul>
+    </div>
+    <div>
+      <div class="diagram">
+        <svg width="320" height="300" viewBox="0 0 320 300">
+          <!-- Requirement -->
+          <rect x="75" y="5" width="170" height="40" rx="6" fill="#E6F7EE" stroke="#00A459" stroke-width="1.5"/>
+          <text x="95" y="30" font-family="Arial" font-size="14">📋</text>
+          <text x="160" y="30" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#00A459">Requirement</text>
+
+          <line x1="160" y1="45" x2="160" y2="60" stroke="#9AA3A8" stroke-width="1.5" marker-end="url(#arrowG3)"/>
+
+          <!-- Task -->
+          <rect x="75" y="62" width="170" height="40" rx="6" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+          <text x="95" y="87" font-family="Arial" font-size="14">📐</text>
+          <text x="170" y="87" text-anchor="middle" font-family="Arial" font-size="12" fill="#4A4A4A">Planned as a task</text>
+
+          <line x1="160" y1="102" x2="160" y2="117" stroke="#9AA3A8" stroke-width="1.5" marker-end="url(#arrowG3)"/>
+
+          <!-- Code -->
+          <rect x="75" y="119" width="170" height="40" rx="6" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+          <text x="95" y="144" font-family="Arial" font-size="14">💻</text>
+          <text x="170" y="144" text-anchor="middle" font-family="Arial" font-size="12" fill="#4A4A4A">Implemented in code</text>
+
+          <line x1="160" y1="159" x2="160" y2="174" stroke="#9AA3A8" stroke-width="1.5" marker-end="url(#arrowG3)"/>
+
+          <!-- Test -->
+          <rect x="75" y="176" width="170" height="40" rx="6" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+          <text x="95" y="201" font-family="Arial" font-size="14">🧪</text>
+          <text x="170" y="201" text-anchor="middle" font-family="Arial" font-size="12" fill="#4A4A4A">Verified by test</text>
+
+          <line x1="160" y1="216" x2="160" y2="231" stroke="#9AA3A8" stroke-width="1.5" marker-end="url(#arrowG3)"/>
+
+          <!-- Release -->
+          <rect x="75" y="233" width="170" height="40" rx="6" fill="#E6F7EE" stroke="#00A459" stroke-width="1.5"/>
+          <text x="95" y="258" font-family="Arial" font-size="14">📦</text>
+          <text x="178" y="258" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#00A459">Documented in release</text>
+
+          <defs>
+            <marker id="arrowG3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#9AA3A8"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════ SLIDE 9 — Operating Modes ════════════════════════ -->
+<section class="slide">
+<div class="slide-inner">
+  <h2>⚙️ Two Operating Modes</h2>
+  <table>
+    <thead><tr><th>Aspect</th><th>👤 Normal Mode</th><th>🤖 Fully Automated Mode</th></tr></thead>
+    <tbody>
+      <tr><td>Requirements review</td><td>👁️ Human confirms scope &amp; priorities</td><td>⚡ Auto-accepted</td></tr>
+      <tr><td>Architecture review</td><td>👁️ Human reviews design</td><td>⚡ Auto-accepted</td></tr>
+      <tr><td>Feature selection</td><td>👆 Human chooses what to build next</td><td>⚡ Automatic — next in queue</td></tr>
+      <tr><td>Review approval</td><td>👁️ Human reviews each increment</td><td>⚡ Auto-approved</td></tr>
+      <tr><td>Release</td><td>🔲 Optional — human decides when</td><td>📦 Mandatory after every feature</td></tr>
+      <tr><td>Version numbering</td><td>✏️ Human chooses version</td><td>🔢 Automatically incremented</td></tr>
+      <tr><td><strong>Automated quality checks</strong></td><td><strong>🛡️ Always enforced</strong></td><td><strong>🛡️ Always enforced</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    🔑 <strong>Key point:</strong> Even in fully automated mode, quality checks are <strong>always enforced</strong>. Automation removes approval steps, but it does not remove verification.
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════ SLIDE 10 — Agent Skills (1/2) ════════════════════════ -->
+<section class="slide">
+<div class="slide-inner">
+  <h2>🧰 Agent Skills — Agent-to-Skill Mapping (1/2)</h2>
+  <p>Skills are <strong>reusable procedures</strong> that agents invoke to do their job consistently. Each skill packages the instructions needed for one specific task.</p>
+  <div class="diagram">
+    <svg width="820" height="320" viewBox="0 0 820 320">
+      <!-- Orchestrator → devloop-state -->
+      <rect x="10" y="10" width="180" height="55" rx="8" fill="#E6F7EE" stroke="#00A459" stroke-width="2"/>
+      <text x="25" y="35" font-family="Arial" font-size="20">🎯</text>
+      <text x="110" y="34" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#00A459">Orchestrator</text>
+      <text x="110" y="52" text-anchor="middle" font-family="Arial" font-size="12" fill="#9AA3A8">manages workflow</text>
+      <line x1="190" y1="37" x2="290" y2="37" stroke="#00A459" stroke-width="2" marker-end="url(#arrowSkill)"/>
+      <rect x="295" y="10" width="220" height="55" rx="8" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="310" y="34" font-family="Arial" font-size="18">📊</text>
+      <text x="405" y="34" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#4A4A4A">devloop-state</text>
+      <text x="405" y="52" text-anchor="middle" font-family="Arial" font-size="12" fill="#9AA3A8">Read &amp; write workflow state</text>
+      <line x1="515" y1="37" x2="560" y2="37" stroke="#9AA3A8" stroke-width="1.5" marker-end="url(#arrowSkillG)"/>
+      <rect x="565" y="15" width="240" height="45" rx="6" fill="#F8F6F2" stroke="#9AA3A8" stroke-width="1"/>
+      <text x="685" y="43" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A4A4A">→ docs/STATE.md</text>
+
+      <!-- Product Manager → prd-authoring -->
+      <rect x="10" y="85" width="180" height="55" rx="8" fill="#E6F7EE" stroke="#00A459" stroke-width="2"/>
+      <text x="25" y="110" font-family="Arial" font-size="20">📋</text>
+      <text x="110" y="109" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#00A459">Product Manager</text>
+      <text x="110" y="127" text-anchor="middle" font-family="Arial" font-size="12" fill="#9AA3A8">requirements</text>
+      <line x1="190" y1="112" x2="290" y2="112" stroke="#00A459" stroke-width="2" marker-end="url(#arrowSkill)"/>
+      <rect x="295" y="85" width="220" height="55" rx="8" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="310" y="109" font-family="Arial" font-size="18">✍️</text>
+      <text x="405" y="109" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#4A4A4A">prd-authoring</text>
+      <text x="405" y="127" text-anchor="middle" font-family="Arial" font-size="12" fill="#9AA3A8">Feature bundles &amp; acceptance criteria</text>
+      <line x1="515" y1="112" x2="560" y2="112" stroke="#9AA3A8" stroke-width="1.5" marker-end="url(#arrowSkillG)"/>
+      <rect x="565" y="90" width="240" height="45" rx="6" fill="#F8F6F2" stroke="#9AA3A8" stroke-width="1"/>
+      <text x="685" y="118" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A4A4A">→ docs/PRD.md</text>
+
+      <!-- Task Planner → feature-bundle-planning -->
+      <rect x="10" y="160" width="180" height="55" rx="8" fill="#E6F7EE" stroke="#00A459" stroke-width="2"/>
+      <text x="25" y="185" font-family="Arial" font-size="20">📐</text>
+      <text x="110" y="184" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#00A459">Task Planner</text>
+      <text x="110" y="202" text-anchor="middle" font-family="Arial" font-size="12" fill="#9AA3A8">task breakdown</text>
+      <line x1="190" y1="187" x2="290" y2="187" stroke="#00A459" stroke-width="2" marker-end="url(#arrowSkill)"/>
+      <rect x="295" y="160" width="220" height="55" rx="8" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="310" y="184" font-family="Arial" font-size="18">🗂️</text>
+      <text x="405" y="184" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#4A4A4A">feature-bundle-planning</text>
+      <text x="405" y="202" text-anchor="middle" font-family="Arial" font-size="12" fill="#9AA3A8">Tasks, dependencies &amp; validation</text>
+      <line x1="515" y1="187" x2="560" y2="187" stroke="#9AA3A8" stroke-width="1.5" marker-end="url(#arrowSkillG)"/>
+      <rect x="565" y="165" width="240" height="45" rx="6" fill="#F8F6F2" stroke="#9AA3A8" stroke-width="1"/>
+      <text x="685" y="193" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A4A4A">→ docs/PLN.md</text>
+
+      <!-- Legend -->
+      <rect x="10" y="250" width="800" height="55" rx="10" fill="#F8F6F2" stroke="#9AA3A8" stroke-width="1"/>
+      <text x="30" y="275" font-family="Arial" font-size="14" fill="#4A4A4A">🟢 <tspan font-weight="bold">Agent</tspan> — the specialist</text>
+      <text x="280" y="275" font-family="Arial" font-size="14" fill="#4A4A4A">⬜ <tspan font-weight="bold">Skill</tspan> — the reusable procedure</text>
+      <text x="560" y="275" font-family="Arial" font-size="14" fill="#4A4A4A">📄 <tspan font-weight="bold">Output</tspan> — the document produced</text>
+      <text x="30" y="295" font-family="Arial" font-size="12" fill="#9AA3A8">In these phases, the agent uses its skill to create the document that becomes the next handoff.</text>
+
+      <defs>
+        <marker id="arrowSkill" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#00A459"/>
+        </marker>
+        <marker id="arrowSkillG" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#9AA3A8"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════ SLIDE 11 — Agent Skills (2/2) ════════════════════════ -->
+<section class="slide">
+<div class="slide-inner">
+  <h2>🧰 Agent Skills — Agent-to-Skill Mapping (2/2)</h2>
+  <p>These are the remaining specialist-to-skill mappings, plus two agents whose procedures are <strong>self-contained</strong> and do not rely on a separate skill file.</p>
+  <div class="diagram">
+    <svg width="820" height="320" viewBox="0 0 820 320">
+      <!-- Software Tester → requirements-based-testing -->
+      <rect x="10" y="10" width="180" height="55" rx="8" fill="#E6F7EE" stroke="#00A459" stroke-width="2"/>
+      <text x="25" y="35" font-family="Arial" font-size="20">🧪</text>
+      <text x="110" y="34" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#00A459">Tester</text>
+      <text x="110" y="52" text-anchor="middle" font-family="Arial" font-size="12" fill="#9AA3A8">verification</text>
+      <line x1="190" y1="37" x2="290" y2="37" stroke="#00A459" stroke-width="2" marker-end="url(#arrowSkill2)"/>
+      <rect x="295" y="10" width="220" height="55" rx="8" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="310" y="34" font-family="Arial" font-size="18">🎯</text>
+      <text x="415" y="34" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#4A4A4A">requirements-based-testing</text>
+      <text x="405" y="52" text-anchor="middle" font-family="Arial" font-size="12" fill="#9AA3A8">Tests from requirements, not code</text>
+      <line x1="515" y1="37" x2="560" y2="37" stroke="#9AA3A8" stroke-width="1.5" marker-end="url(#arrowSkillG2)"/>
+      <rect x="565" y="15" width="240" height="45" rx="6" fill="#F8F6F2" stroke="#9AA3A8" stroke-width="1"/>
+      <text x="685" y="43" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A4A4A">→ docs/TST.md</text>
+
+      <!-- Reviewer → review-packaging -->
+      <rect x="10" y="85" width="180" height="55" rx="8" fill="#E6F7EE" stroke="#00A459" stroke-width="2"/>
+      <text x="25" y="110" font-family="Arial" font-size="20">🔍</text>
+      <text x="110" y="109" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#00A459">Reviewer</text>
+      <text x="110" y="127" text-anchor="middle" font-family="Arial" font-size="12" fill="#9AA3A8">approval package</text>
+      <line x1="190" y1="112" x2="290" y2="112" stroke="#00A459" stroke-width="2" marker-end="url(#arrowSkill2)"/>
+      <rect x="295" y="85" width="220" height="55" rx="8" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="310" y="109" font-family="Arial" font-size="18">📦</text>
+      <text x="405" y="109" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#4A4A4A">review-packaging</text>
+      <text x="405" y="127" text-anchor="middle" font-family="Arial" font-size="12" fill="#9AA3A8">Change summary, risks &amp; approval Qs</text>
+      <line x1="515" y1="112" x2="560" y2="112" stroke="#9AA3A8" stroke-width="1.5" marker-end="url(#arrowSkillG2)"/>
+      <rect x="565" y="90" width="240" height="45" rx="6" fill="#F8F6F2" stroke="#9AA3A8" stroke-width="1"/>
+      <text x="685" y="118" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A4A4A">→ docs/REV.md</text>
+
+      <!-- Release Manager → release-notes -->
+      <rect x="10" y="160" width="180" height="55" rx="8" fill="#E6F7EE" stroke="#00A459" stroke-width="2"/>
+      <text x="25" y="185" font-family="Arial" font-size="20">📦</text>
+      <text x="110" y="184" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#00A459">Release Manager</text>
+      <text x="110" y="202" text-anchor="middle" font-family="Arial" font-size="12" fill="#9AA3A8">delivery</text>
+      <line x1="190" y1="187" x2="290" y2="187" stroke="#00A459" stroke-width="2" marker-end="url(#arrowSkill2)"/>
+      <rect x="295" y="160" width="220" height="55" rx="8" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="310" y="184" font-family="Arial" font-size="18">📝</text>
+      <text x="405" y="184" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#4A4A4A">release-notes</text>
+      <text x="405" y="202" text-anchor="middle" font-family="Arial" font-size="12" fill="#9AA3A8">Release notes &amp; traceability table</text>
+      <line x1="515" y1="187" x2="560" y2="187" stroke="#9AA3A8" stroke-width="1.5" marker-end="url(#arrowSkillG2)"/>
+      <rect x="565" y="165" width="240" height="45" rx="6" fill="#F8F6F2" stroke="#9AA3A8" stroke-width="1"/>
+      <text x="685" y="193" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A4A4A">→ docs/REL.md</text>
+
+      <!-- Self-contained agents -->
+      <rect x="10" y="245" width="805" height="65" rx="10" fill="#FFF" stroke="#E8833A" stroke-width="2" stroke-dasharray="6,4"/>
+      <text x="30" y="272" font-family="Arial" font-size="15" font-weight="bold" fill="#E8833A">⚡ Self-contained agents (no external skill):</text>
+      <text x="25" y="296" font-family="Arial" font-size="20">🏗️</text>
+      <text x="50" y="296" font-family="Arial" font-size="14" fill="#4A4A4A"><tspan font-weight="bold">Architect</tspan> — designs modules &amp; interfaces → docs/ARC.md</text>
+      <text x="435" y="296" font-family="Arial" font-size="20">💻</text>
+      <text x="460" y="296" font-family="Arial" font-size="14" fill="#4A4A4A"><tspan font-weight="bold">Developer</tspan> — writes code &amp; unit tests → src/ &amp; tests/</text>
+
+      <defs>
+        <marker id="arrowSkill2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#00A459"/>
+        </marker>
+        <marker id="arrowSkillG2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#9AA3A8"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════ SLIDE 12 — Summary ════════════════════════ -->
+<section class="slide">
+<div class="slide-inner" style="text-align:center;">
+  <h2>✨ Summary</h2>
+  <div class="diagram">
+    <svg width="700" height="360" viewBox="0 0 700 360">
+      <!-- Six principle cards in 2×3 grid -->
+      <!-- Row 1 -->
+      <rect x="15" y="10" width="210" height="90" rx="10" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="120" y="30" text-anchor="middle" font-family="Arial" font-size="18">🧩</text>
+      <text x="120" y="50" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#00A459">Small Increments</text>
+      <text x="120" y="68" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A4A4A">One feature group built,</text>
+      <text x="120" y="84" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A4A4A">tested &amp; delivered at a time</text>
+
+      <rect x="245" y="10" width="210" height="90" rx="10" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="350" y="30" text-anchor="middle" font-family="Arial" font-size="18">🛡️</text>
+      <text x="350" y="50" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#00A459">Quality by Design</text>
+      <text x="350" y="68" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A4A4A">Four quality gates prevent</text>
+      <text x="350" y="84" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A4A4A">defects from moving forward</text>
+
+      <rect x="475" y="10" width="210" height="90" rx="10" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="580" y="30" text-anchor="middle" font-family="Arial" font-size="18">🔗</text>
+      <text x="580" y="50" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#00A459">Full Traceability</text>
+      <text x="580" y="68" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A4A4A">Every change traces to a</text>
+      <text x="580" y="84" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A4A4A">requirement and a test</text>
+
+      <!-- Row 2 -->
+      <rect x="15" y="120" width="210" height="90" rx="10" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="120" y="140" text-anchor="middle" font-family="Arial" font-size="18">👤</text>
+      <text x="120" y="160" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#00A459">Clear Accountability</text>
+      <text x="120" y="178" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A4A4A">Each specialist owns exactly</text>
+      <text x="120" y="194" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A4A4A">one document and one phase</text>
+
+      <rect x="245" y="120" width="210" height="90" rx="10" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="350" y="140" text-anchor="middle" font-family="Arial" font-size="18">👁️</text>
+      <text x="350" y="160" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#00A459">Human Oversight</text>
+      <text x="350" y="178" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A4A4A">Approval at key decisions</text>
+      <text x="350" y="194" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A4A4A">(unless fully automated)</text>
+
+      <rect x="475" y="120" width="210" height="90" rx="10" fill="#FFF" stroke="#00A459" stroke-width="1.5"/>
+      <text x="580" y="140" text-anchor="middle" font-family="Arial" font-size="18">📄</text>
+      <text x="580" y="160" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#00A459">Documented Decisions</text>
+      <text x="580" y="178" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A4A4A">Every phase produces a</text>
+      <text x="580" y="194" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A4A4A">persistent document</text>
+
+      <!-- Tagline -->
+      <rect x="100" y="260" width="500" height="50" rx="25" fill="#E6F7EE" stroke="#00A459" stroke-width="2"/>
+      <text x="350" y="291" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#00A459">🧩 Build small · ✅ Verify always · 🔗 Trace everything</text>
+    </svg>
+  </div>
+</div>
+</section>
+
+</div><!-- /deck -->
+
+<!-- Navigation -->
+<div class="nav">
+  <button id="prev" onclick="go(-1)" aria-label="Previous slide">◀</button>
+  <span class="counter" id="counter">1 / 12</span>
+  <button id="next" onclick="go(1)" aria-label="Next slide">▶</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  let cur = 0;
+
+  function show(i) {
+    slides[cur].classList.remove('active');
+    cur = Math.max(0, Math.min(i, slides.length - 1));
+    slides[cur].classList.add('active');
+    counter.textContent = (cur + 1) + ' / ' + slides.length;
+    progress.style.width = ((cur + 1) / slides.length * 100) + '%';
+    prevBtn.disabled = cur === 0;
+    nextBtn.disabled = cur === slides.length - 1;
+  }
+
+  function go(d) { show(cur + d); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); go(1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+    if (e.key === 'Home') { e.preventDefault(); show(0); }
+    if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+  });
+
+  show(0);
+</script>
+</body>
+</html>

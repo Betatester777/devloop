@@ -1,4 +1,4 @@
-# Devloop Orchestrator
+# DevLoop Orchestrator
 
 A document-driven, phase-gated agentic software workflow that produces small, testable, executable increments. Designed for VS Code with GitHub Copilot agents.
 
@@ -112,14 +112,14 @@ graph TB
 
 | Agent | Phase | Primary Output | Model |
 |---|---|---|---|
-| `devloop-orchestrator` | All | `docs/STATE.md` | Claude Haiku 4.5 |
-| `product-manager` | Requirements | `docs/PRD.md` | Claude Sonnet 4.6 |
-| `software-architect` | Architecture | `docs/ARC.md` | Claude Sonnet 4.6 |
-| `task-planner` | Planning | `docs/PLN.md` | Claude Sonnet 4.6 |
-| `software-developer` | Implementation | `src/`, `tests/` | Claude Sonnet 4.6 |
-| `software-tester` | Testing | `docs/TST.md` | Claude Sonnet 4.6 |
-| `review-presenter` | Review | `docs/REV.md` | Claude Haiku 4.5 |
-| `release-manager` | Release | `docs/REL.md`, `releases/` | Claude Sonnet 4.6 |
+| `devloop-orchestrator` | All | `docs/STATE.md` | Claude Opus 4.6 |
+| `product-manager` | Requirements | `docs/PRD.md` | Claude Opus 4.6 |
+| `software-architect` | Architecture | `docs/ARC.md` | Claude Opus 4.6 |
+| `task-planner` | Planning | `docs/PLN.md` | Claude Opus 4.6 |
+| `software-developer` | Implementation | `src/`, `tests/` | Claude Opus 4.6 |
+| `software-tester` | Testing | `docs/TST.md` | Claude Opus 4.6 |
+| `review-presenter` | Review | `docs/REV.md` | Claude Opus 4.6 |
+| `release-manager` | Release | `docs/REL.md`, `releases/` | Claude Opus 4.6 |
 
 ## Phase Banners
 

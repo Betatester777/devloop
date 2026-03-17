@@ -1,12 +1,12 @@
 ---
-description: "Start a new Devloop workflow — capture user request, set up constraints, and begin the first phase."
+description: "Start a new DevLoop workflow — capture user request, set up constraints, and begin the first phase."
 mode: "agent"
 agent: "devloop-orchestrator"
 ---
 
 # Start new workflow
 
-The user wants to start the Devloop workflow with a new request.
+The user wants to start the DevLoop workflow with a new request.
 
 1. Check whether `docs/STATE.md` already exists. If it does, warn the user that a workflow is already in progress and ask whether to continue it instead or start fresh (which requires cleanup first).
 2. If no workflow is active, read `BASE_CONFIG.md` for constraints and stack.
