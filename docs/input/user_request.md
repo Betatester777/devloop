@@ -91,6 +91,11 @@ architecture:
   - linux
   - windows
 
+## Additional Requests (2026-03-17)
+
+- Add category selection in the settings/options screen so the player can choose which food category to play with
+- The default color theme should be light (not green/dark)
+
 ## Date Received
 
 2026-03-16
