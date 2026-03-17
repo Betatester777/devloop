@@ -1,0 +1,866 @@
+{
+  "cooking_devices_r01_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r01_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r01_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r01_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r01_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r01_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r02_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r02_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r02_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r02_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r02_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r02_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r03_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r03_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r03_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r03_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r03_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r03_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r04_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r04_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r04_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r04_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r04_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r04_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r05_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r05_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r05_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r05_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r05_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r05_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r06_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r06_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r06_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r06_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r06_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "cooking_devices_r06_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r01_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r01_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r01_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r01_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r01_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r01_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r02_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r02_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r02_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r02_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r02_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r02_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r03_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r03_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r03_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r03_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r03_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r03_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r04_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r04_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r04_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r04_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r04_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r04_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r05_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r05_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r05_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r05_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r05_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r05_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r06_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r06_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r06_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r06_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r06_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "dishes_r06_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r01_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r01_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r01_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r01_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r01_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r01_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r02_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r02_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r02_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r02_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r02_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r02_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r03_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r03_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r03_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r03_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r03_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r03_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r04_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r04_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r04_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r04_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r04_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r04_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r05_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r05_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r05_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r05_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r05_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r05_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r06_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r06_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r06_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r06_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r06_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "drinks_r06_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r01_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r01_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r01_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r01_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r01_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r01_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r02_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r02_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r02_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r02_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r02_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r02_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r03_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r03_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r03_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r03_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r03_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r03_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r04_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r04_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r04_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r04_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r04_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r04_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r05_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r05_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r05_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r05_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r05_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r05_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r06_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r06_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r06_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r06_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r06_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "easter_eggs_r06_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r01_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r01_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r01_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r01_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r01_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r01_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r02_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r02_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r02_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r02_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r02_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r02_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r03_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r03_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r03_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r03_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r03_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r03_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r04_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r04_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r04_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r04_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r04_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r04_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r05_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r05_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r05_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r05_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r05_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r05_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r06_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r06_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r06_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r06_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r06_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "finger_food_r06_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r01_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r01_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r01_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r01_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r01_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r01_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r02_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r02_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r02_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r02_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r02_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r02_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r03_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r03_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r03_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r03_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r03_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r03_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r04_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r04_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r04_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r04_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r04_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r04_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r05_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r05_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r05_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r05_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r05_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r05_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r06_c01": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r06_c02": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r06_c03": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r06_c04": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r06_c05": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  },
+  "kitchen_utensils_r06_c06": {
+    "source_url": "https://github.com/nickvdw/delicious-memory/blob/main/assets",
+    "licence": "CC0-1.0"
+  }
+}
