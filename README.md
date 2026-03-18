@@ -127,7 +127,7 @@ Every agent prints a phase banner as the first line of every response. This give
 
 | Phase | Banner format |
 |---|---|
-| Init | `# 🎯 Init` |
+| Init | `# 🚀 Init` |
 | Requirements | `# 📋 Requirements` |
 | Architecture | `# 🏗️ Architecture` |
 | Planning | `# 📐 Planning — Bundle N/T: <name>` |
