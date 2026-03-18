@@ -143,7 +143,7 @@ Example: `# 💻 Implementation — Bundle 1/8: Desktop UI & window · Cycle 1/3
 
 ## Agent Interaction Patterns
 
-Agents differ in how they interact with the user during normal mode. Some prompt for decisions, others run autonomously and hand off to the orchestrator.
+All user-facing prompts are handled by the **orchestrator**, not by sub-agents. Sub-agents return deliverables and the orchestrator presents accept/improve/approval options to the user.
 
 | Agent | User interaction (normal mode) | YOLO override |
 |---|---|---|
@@ -159,7 +159,7 @@ Agents differ in how they interact with the user during normal mode. Some prompt
 
 - **Approve & Next Cycle** — accept the increment and move to the next feature bundle (skip release).
 - **Approve & Release** — accept the increment and proceed to the Release phase.
-- **Needs Rework** — reject with feedback; the reviewer records rework notes and returns to the increment cycle.
+- **Needs Rework** — reject with feedback; rework notes are recorded in `docs/REV.md` and the orchestrator routes back to Implementation for the same bundle.
 
 ## Skills
 
@@ -250,7 +250,7 @@ When enabled, the workflow runs fully automated — no user approval needed at a
 
 ## Document Ownership
 
-Each document has exactly one owning agent. Only the owner creates or modifies its document.
+Each document has exactly one owning agent. Only the owner creates or makes structural changes to its document. Exception: the software developer may update task statuses in `docs/PLN.md`.
 
 ```mermaid
 graph TD
