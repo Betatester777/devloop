@@ -1,21 +1,21 @@
 # DevLoop Orchestrator
 
-A document-driven, phase-gated agentic software workflow that produces small, testable, executable increments. Designed for VS Code with GitHub Copilot agents.
+A document-driven, phase-gated agentic software workflow that produces small, testable, executable increments. Designed for Claude Code.
 
 ## Quick Start
 
 ### Commands
 
-Use these prompt shortcuts in VS Code Copilot Chat (type `#` to access):
+Use these slash commands in Claude Code:
 
-| Prompt | Description |
+| Command | Description |
 |---|---|
-| `#devloop-start` | Start a new workflow — capture requirements and begin |
-| `#devloop-bulk-start` | Start with a pre-structured request (name, summary, requirements, architecture) |
-| `#devloop-bulk-yolo-start` | Start with a pre-structured request and YOLO mode (no approval, auto-release) |
-| `#devloop-continue` | Resume the workflow from the current state |
-| `#devloop-status` | Show current phase, bundle, progress, and next step |
-| `#devloop-cleanup` | Clean up transient artifacts or perform a full reset |
+| `/devloop-start` | Start a new workflow — capture requirements and begin |
+| `/devloop-bulk-start` | Start with a pre-structured request (name, summary, requirements, architecture) |
+| `/devloop-bulk-yolo-start` | Start with a pre-structured request and YOLO mode (no approval, auto-release) |
+| `/devloop-continue` | Resume the workflow from the current state |
+| `/devloop-status` | Show current phase, bundle, progress, and next step |
+| `/devloop-cleanup` | Clean up transient artifacts or perform a full reset |
 
 ### Setup
 
@@ -110,16 +110,16 @@ graph TB
 
 ## Agent Roster
 
-| Agent | Phase | Primary Output | Model |
-|---|---|---|---|
-| `devloop-orchestrator` | All | `docs/STATE.md` | Claude Opus 4.6 |
-| `product-manager` | Requirements | `docs/PRD.md` | Claude Opus 4.6 |
-| `software-architect` | Architecture | `docs/ARC.md` | Claude Opus 4.6 |
-| `task-planner` | Planning | `docs/PLN.md` | Claude Opus 4.6 |
-| `software-developer` | Implementation | `src/`, `tests/` | Claude Opus 4.6 |
-| `software-tester` | Testing | `docs/TST.md` | Claude Opus 4.6 |
-| `review-presenter` | Review | `docs/REV.md` | Claude Opus 4.6 |
-| `release-manager` | Release | `docs/REL.md`, `releases/` | Claude Opus 4.6 |
+| Agent | Phase | Primary Output |
+|---|---|---|
+| `devloop-orchestrator` | All | `docs/STATE.md` |
+| `product-manager` | Requirements | `docs/PRD.md` |
+| `software-architect` | Architecture | `docs/ARC.md` |
+| `task-planner` | Planning | `docs/PLN.md` |
+| `software-developer` | Implementation | `src/`, `tests/` |
+| `software-tester` | Testing | `docs/TST.md` |
+| `review-presenter` | Review | `docs/REV.md` |
+| `release-manager` | Release | `docs/REL.md`, `releases/` |
 
 ## Phase Banners
 
@@ -312,10 +312,11 @@ graph TD
 │   └── v0.1.0/
 │       ├── release-v0.1.0.zip
 │       └── REL.md
+├── .claude/
+│   ├── commands/           # Slash commands for Claude Code (/devloop-start, etc.)
+│   └── agents/             # Sub-agent definitions (.md)
 └── .github/
-    ├── agents/             # Agent definitions (.agent.md)
     ├── skills/             # Reusable skill procedures (SKILL.md)
-    ├── prompts/            # Workflow prompt shortcuts (.prompt.md)
     └── templates/          # Document templates (copied to docs/)
 ```
 
