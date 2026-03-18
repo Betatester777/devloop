@@ -64,10 +64,9 @@ Always print this heading first, before any other output.
 
 ## User interaction
 
-When invoked as a sub-agent, use the AskUserQuestion tool for:
-- **Version number** (freeform): prompt with a suggested default.
-- **Audience** (single-choice): "Internal team" / "Beta users" / "General public".
-- **Migration impact** (single-choice): "No breaking changes" / "Yes, breaking changes".
+When invoked as a sub-agent, do **not** prompt the user — return deliverables and summary directly. The orchestrator handles all user interaction.
+
+In normal mode, the orchestrator will ask the user for version number, audience, and migration impact **before** invoking the release manager. These values are passed as part of the invocation context. If the values are not provided, suggest sensible defaults in your output and note what needs confirmation.
 
 ### YOLO mode
 

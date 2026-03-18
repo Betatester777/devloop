@@ -74,13 +74,13 @@ Workflow documents (`docs/*.md`) do **not** exist at the start of a project. Tem
 
 **ID rules**: IDs are assigned once and never reused. Retired items are marked `(Retired)` — rows are never deleted. Every AC ID must trace forward to at least one task (PLN), one test (TST), and one commit.
 
-## Tool mapping
+## Tools
 
-| Copilot tool | Claude Code equivalent |
+| Tool | Usage |
 |---|---|
-| `vscode/askQuestions` | `AskUserQuestion` tool |
-| `edit/editFiles` | `Edit` / `Write` tools |
-| `read/readFile` | `Read` tool |
-| `execute/runInTerminal` | `Bash` tool |
-| `search/codebase` | `Grep` / `Glob` tools |
-| `runSubagent` | `Agent` tool with sub-agent |
+| `AskUserQuestion` | Structured user decisions (scope, approval, version) |
+| `Edit` / `Write` | Create and modify files |
+| `Read` | Read files |
+| `Bash` | Run commands (pytest, ruff, zip, etc.) |
+| `Grep` / `Glob` | Search codebase |
+| `Agent` | Invoke sub-agents for each workflow phase |

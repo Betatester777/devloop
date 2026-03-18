@@ -25,12 +25,6 @@
 
 <!-- Repeat for each REQ-N bundle. -->
 
-## Traceability
-
-<!-- This section is auto-maintained. Do not edit manually.
-     Each REQ and AC ID is unique and stable across the project lifetime.
-     Renumbering is forbidden — retired items are marked (Retired), never deleted. -->
-
 ## Out of Scope
 
 <!-- Explicitly excluded items. -->

@@ -20,10 +20,6 @@
 | AC-1.1 | 1, 3 | Pass |
 -->
 
-## Executed Tests
-
-<!-- Record of test runs with timestamps and environments. -->
-
 ## Results
 
 <!-- Summary of pass/fail counts and key findings. -->

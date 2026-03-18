@@ -79,4 +79,4 @@ Before handoff, confirm:
 3. At least one technical decision is documented with rationale.
 4. Risks are identified (at least "None identified" if truly none).
 5. The architecture is stable enough for the developer to start — no TBD placeholders in public interfaces.
-6. In normal mode: the user has accepted the architecture. In YOLO mode: auto-accepted.
+6. In normal mode: the orchestrator will confirm acceptance with the user after this agent returns. In YOLO mode: auto-accepted.

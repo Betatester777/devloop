@@ -7,7 +7,7 @@
 ## Changes
 
 <!-- List of changes included in this increment.
-| File | Change | Traces |
+| File | Description | Traces |
 |---|---|---|
 | src/foo.py | Added bar logic | AC-1.2 |
 -->

@@ -68,4 +68,4 @@ Before handoff, confirm:
 3. No REQ or AC ID has been reused or renumbered.
 4. Scope boundaries are defined (in-scope and out-of-scope).
 5. No unresolved ambiguities remain (or they are explicitly flagged as open questions).
-6. In normal mode: the user has confirmed the scope and accepted the PRD. In YOLO mode: auto-accepted.
+6. In normal mode: the orchestrator will confirm scope and acceptance with the user after this agent returns. In YOLO mode: auto-accepted.

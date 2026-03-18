@@ -75,11 +75,12 @@ To disable: set it to `Disabled` (default).
 | Increment cycle | Review | Acceptance criteria pass |
 | Review | Release | User approves and requests release (normal), or auto-approved (YOLO) |
 | Review | Increment cycle | User approves and skips release (normal mode only) |
-| Any phase | Rework | Blockers, failed tests, or missing information |
+| Review | Increment cycle | Needs rework — return to Implementation for the same bundle |
+| Increment cycle (test fails) | Increment cycle | Re-invoke developer to fix, then re-test (up to max repeats) |
 
 ## Cleanup
 
-Cleanup is not a workflow phase — it runs as a VS Code task (manually or automatically at session boundaries).
+Cleanup is not a workflow phase — it runs via the `/devloop-cleanup` command.
 
 - **Persistent state**: documents, decisions, accepted increments, release history — kept across resets.
 - **Assets**: `src/assets/` is always preserved — never deleted during cleanup or full reset.

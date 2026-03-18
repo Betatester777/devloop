@@ -81,4 +81,4 @@ Before handoff (Accept gate), confirm:
 4. Every unresolved risk from `docs/ARC.md` appears in the Risks section.
 5. Demo steps are runnable — each step has an exact command or action.
 6. Approval questions are clear yes/no questions.
-7. In normal mode: the user has explicitly approved. In YOLO mode: auto-approved.
+7. In normal mode: the orchestrator will present approval options to the user after this agent returns. In YOLO mode: auto-approved.

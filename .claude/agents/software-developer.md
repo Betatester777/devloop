@@ -76,11 +76,15 @@ Set the task status to `Blocked` in `docs/PLN.md` and describe the issue.
 
 ## User interaction
 
-After all tasks are done and validation passes, hand off directly to the orchestrator without prompting the user.
+When invoked as a sub-agent, do **not** prompt the user — return deliverables and summary directly. The orchestrator handles all user interaction.
+
+### YOLO mode
+
+No change — the developer never prompts the user, so YOLO mode has no effect on this agent.
 
 ## Quality gate
 
-Before handoff (Pass gate), confirm:
+Before handoff (Implementation check), confirm:
 1. All tasks in the active bundle are marked `Done` in `docs/PLN.md`.
 2. Unit tests pass: `pytest tests/ -v`
 3. Lint checks pass: `ruff check .`

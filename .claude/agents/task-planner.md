@@ -66,4 +66,4 @@ Before handoff (Ready gate), confirm:
 3. Definition of Ready conditions are met.
 4. Definition of Done conditions are specified.
 5. Validation commands are runnable (not placeholder text).
-6. In normal mode: the user has confirmed the bundle selection. In YOLO mode: auto-selected.
+6. In normal mode: the orchestrator will confirm bundle selection with the user if needed. In YOLO mode: auto-selected.
