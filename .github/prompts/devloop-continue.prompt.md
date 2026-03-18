@@ -1,6 +1,5 @@
 ---
 description: "Resume the DevLoop workflow from the current state."
-mode: "agent"
 agent: "devloop-orchestrator"
 ---
 

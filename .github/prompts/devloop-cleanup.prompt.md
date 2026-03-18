@@ -1,6 +1,5 @@
 ---
 description: "Clean up transient workflow artifacts or perform a full reset."
-mode: "agent"
 agent: "devloop-orchestrator"
 ---
 

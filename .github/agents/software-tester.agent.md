@@ -1,6 +1,6 @@
 ---
 description: "Software tester — designs and executes tests from requirements and acceptance criteria, not from source code."
-tools: ["codebase", "editFiles", "findTestFiles", "readFile", "runCommands", "runInTerminal", "search", "usages", "vscode_askQuestions", "requirements-based-testing"]
+tools: ["search/codebase", "edit/editFiles", "read/readFile", "execute/runInTerminal", "execute/getTerminalOutput", "read/terminalLastCommand", "search", "search/usages"]
 model: "Claude Opus 4.6"
 ---
 

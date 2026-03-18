@@ -1,6 +1,6 @@
 ---
 description: "Task planner — converts architecture into an active feature bundle plan in docs/PLN.md."
-tools: ["codebase", "editFiles", "readFile", "runCommands", "search", "vscode_askQuestions", "feature-bundle-planning"]
+tools: ["search/codebase", "edit/editFiles", "read/readFile", "execute/runInTerminal", "execute/getTerminalOutput", "read/terminalLastCommand", "search", "vscode/askQuestions"]
 model: "Claude Opus 4.6"
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: "Review presenter — prepares a runnable review package and asks clear approval questions."
-tools: ["codebase", "editFiles", "readFile", "runCommands", "runInTerminal", "search", "vscode_askQuestions", "review-packaging"]
+tools: ["search/codebase", "edit/editFiles", "read/readFile", "execute/runInTerminal", "execute/getTerminalOutput", "read/terminalLastCommand", "search", "vscode/askQuestions"]
 model: "Claude Opus 4.6"
 ---
 

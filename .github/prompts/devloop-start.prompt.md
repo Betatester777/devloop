@@ -1,6 +1,5 @@
 ---
 description: "Start a new DevLoop workflow — capture user request, set up constraints, and begin the first phase."
-mode: "agent"
 agent: "devloop-orchestrator"
 ---
 

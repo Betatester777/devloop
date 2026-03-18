@@ -1,6 +1,5 @@
 ---
 description: "Start a DevLoop workflow with a pre-structured request and YOLO mode enabled (no user approval, auto-release)."
-mode: "agent"
 agent: "devloop-orchestrator"
 ---
 

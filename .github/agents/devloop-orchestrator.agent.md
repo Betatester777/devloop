@@ -1,6 +1,6 @@
 ---
 description: "DevLoop orchestrator — reads state, selects the next valid phase, invokes subagents, and enforces quality gates."
-tools: ["codebase", "editFiles", "fetchWebpage", "findTestFiles", "githubRepo", "readFile", "runCommands", "runInTerminal", "search", "usages", "vscode_askQuestions", "devloop-state"]
+tools: ["search/codebase", "edit/editFiles", "web/githubRepo", "read/readFile", "execute/runInTerminal", "execute/getTerminalOutput", "read/terminalLastCommand", "search", "search/usages", "vscode/askQuestions"]
 model: "Claude Opus 4.6"
 ---
 

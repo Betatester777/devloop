@@ -1,6 +1,5 @@
 ---
 description: "Start a DevLoop workflow with a pre-structured request (name, summary, requirements, architecture)."
-mode: "agent"
 agent: "devloop-orchestrator"
 ---
 

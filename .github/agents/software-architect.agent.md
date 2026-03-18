@@ -1,6 +1,6 @@
 ---
 description: "Software architect — defines modules, interfaces, technical decisions, and risks in docs/ARC.md."
-tools: ["codebase", "editFiles", "readFile", "runCommands", "search", "usages", "vscode_askQuestions"]
+tools: ["search/codebase", "edit/editFiles", "read/readFile", "execute/runInTerminal", "execute/getTerminalOutput", "read/terminalLastCommand", "search", "search/usages", "vscode/askQuestions"]
 model: "Claude Opus 4.6"
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: "Product manager — converts raw user input into structured product requirements in docs/PRD.md."
-tools: ["codebase", "editFiles", "readFile", "runCommands", "search", "vscode_askQuestions", "prd-authoring"]
+tools: ["search/codebase", "edit/editFiles", "read/readFile", "execute/runInTerminal", "execute/getTerminalOutput", "read/terminalLastCommand", "search", "vscode/askQuestions"]
 model: "Claude Opus 4.6"
 ---
 

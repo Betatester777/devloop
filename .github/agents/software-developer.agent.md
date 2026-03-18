@@ -1,6 +1,6 @@
 ---
 description: "Software developer — implements the active feature bundle, producing code, tests, and documentation."
-tools: ["codebase", "editFiles", "findTestFiles", "readFile", "runCommands", "runInTerminal", "search", "usages"]
+tools: ["search/codebase", "edit/editFiles", "read/readFile", "execute/runInTerminal", "execute/getTerminalOutput", "read/terminalLastCommand", "search", "search/usages"]
 model: "Claude Opus 4.6"
 ---
 
