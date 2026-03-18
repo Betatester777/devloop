@@ -89,6 +89,10 @@ Use `vscode_askQuestions` with a single decision question:
 
 Do not mark the increment as accepted until the user explicitly picks one of the "Approve" options.
 
+### Subagent mode
+
+When invoked via `runSubagent`, do **not** use `vscode_askQuestions`. Assemble `docs/REV.md` and return your deliverables and summary directly — the orchestrator handles the approval prompt.
+
 ### YOLO mode
 
 When `docs/STATE.md` has `## YOLO Mode` set to `Enabled`:

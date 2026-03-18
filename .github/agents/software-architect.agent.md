@@ -103,6 +103,10 @@ Use `vscode_askQuestions` after drafting the architecture:
 
 Do not hand off until the user accepts.
 
+### Subagent mode
+
+When invoked via `runSubagent`, do **not** use `vscode_askQuestions`. Return your deliverables and summary directly — the orchestrator handles all user interaction.
+
 ### YOLO mode
 
 When `docs/STATE.md` has `## YOLO Mode` set to `Enabled`:

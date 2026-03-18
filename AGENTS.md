@@ -44,7 +44,7 @@ Every agent prints a phase banner as the first line of every response:
 | Software Architect | Accept/improve after design | Auto-accept |
 | Task Planner | Bundle selection (if ambiguous) | Auto-select next |
 | Software Developer | No prompts — auto-handoff | — |
-| Software Tester | Summary + accept/improve | — |
+| Software Tester | Summary — auto-handoff (Pass gate is automated) | — |
 | Review Presenter | Summary + Approve & Next Cycle / Approve & Release / Needs Rework | Auto "Approve & Release" |
 | Release Manager | Version, audience, migration | Auto-increment minor |
 

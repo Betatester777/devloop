@@ -86,19 +86,17 @@ In `docs/TST.md`:
 
 ## User interaction
 
-After recording results, print a brief summary (acceptance criteria covered, pass/fail counts, defects).
+After recording results, print a brief summary (acceptance criteria covered, pass/fail counts, defects) and hand off. The **Pass gate is automated** — if all tests pass and lint is clean, the orchestrator transitions to Review without user approval. Do **not** prompt the user for accept/improve.
 
-Use `vscode_askQuestions` after presenting the test summary:
+### Subagent mode
 
-- **Accept or improve** (single-choice): options "Accept — test results are ready for review" / "Improve — I have feedback", with `allowFreeformInput: true` for revision notes.
-
-Do not hand off until the user accepts.
+When invoked via `runSubagent`, do **not** use `vscode_askQuestions`. Return your deliverables and summary directly — the orchestrator handles all user interaction.
 
 ### YOLO mode
 
 When `docs/STATE.md` has `## YOLO Mode` set to `Enabled`:
 
-1. **Skip the accept/improve prompt.** Hand off immediately after the quality gate passes.
+1. Hand off immediately after the quality gate passes.
 2. Still print the test summary to chat so the user can see what was tested.
 
 ## Quality gate
