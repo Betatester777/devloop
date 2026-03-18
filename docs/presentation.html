@@ -149,7 +149,7 @@
 
   /* Navigation */
   .nav {
-    position: fixed; bottom: 30px; right: 40px;
+    position: fixed; bottom: 50px; right: 40px;
     display: flex; gap: 10px; z-index: 100;
   }
   .nav button {
@@ -159,12 +159,16 @@
     transition: all 0.2s;
   }
   .nav button:hover { background: var(--g500); color: white; }
-  .slide-counter {
-    position: fixed; bottom: 38px; left: 40px;
-    font-size: 0.9em; color: var(--n700); font-weight: 500;
-    background: rgba(255,255,255,0.85); padding: 4px 14px;
-    border-radius: 20px; backdrop-filter: blur(4px);
+  .slide-footer {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 40px;
+    font-size: 0.75em; color: var(--n600); font-weight: 500;
+    background: rgba(255,255,255,0.9); backdrop-filter: blur(4px);
+    border-top: 1px solid var(--n300);
   }
+  .footer-title { color: var(--g800); }
+  .footer-page { color: var(--n700); }
 
   /* Agenda */
   .agenda-list { list-style: none; padding: 0; max-width: 700px; }
@@ -601,24 +605,23 @@
   <button onclick="prev()" id="btnPrev">←</button>
   <button onclick="next()" id="btnNext">→</button>
 </div>
-<div class="slide-counter" style="display:none"><span id="current">1</span> / <span id="total">14</span></div>
+<div class="slide-footer" style="display:none"><span class="footer-title">DevLoop Orchestrator</span><span class="footer-page"><span id="current">1</span> / <span id="total">14</span></span></div>
 
 <script>
   let idx = 0;
+  const SKIP = 2; // title + agenda are unnumbered
   const slides = document.querySelectorAll('.slide');
   const total = slides.length;
+  const footer = document.querySelector('.slide-footer');
   document.getElementById('total').textContent = total - SKIP;
-
-  const SKIP = 2; // title + agenda are unnumbered
-  const counter = document.querySelector('.slide-counter');
 
   function show(i) {
     slides.forEach(s => s.classList.remove('active'));
     slides[i].classList.add('active');
     if (i < SKIP) {
-      counter.style.display = 'none';
+      footer.style.display = 'none';
     } else {
-      counter.style.display = '';
+      footer.style.display = '';
       document.getElementById('current').textContent = i - SKIP + 1;
     }
   }
