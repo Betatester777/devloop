@@ -84,4 +84,4 @@ Cleanup is not a workflow phase — it runs as a VS Code task (manually or autom
 - **Assets**: `src/assets/` is always preserved — never deleted during cleanup or full reset.
 - **Transient state**: temp files, scratch outputs, cached logs, local session artifacts — removed on cleanup.
 - Cleanup removes transient state but keeps persistent state unless the user explicitly requests a full reset.
-- Full reset removes workflow documents under `docs/` (except `docs/input/`) and resets `docs/STATE.md`, but never touches `src/assets/` or `releases/`.
+- Full reset removes workflow documents under `docs/` (except `docs/input/` and `docs/OVERVIEW.*`) and resets `docs/STATE.md`, but never touches `src/assets/` or `releases/`.

@@ -109,7 +109,7 @@ Use `vscode_askQuestions` for all structured user decisions:
   - "Transient only (recommended)"
   - "Full reset"
   - If full reset: follow-up freeform confirmation ("Type YES to confirm").
-  - **Always preserve** `src/assets/` and `releases/` — never delete these directories regardless of cleanup scope.
+  - **Always preserve** `src/assets/`, `releases/`, and `docs/OVERVIEW.*` — never delete these regardless of cleanup scope.
 - **Blocker escalation** (freeform): describe the blocker and ask the user for a resolution path.
 - **Phase override** (single-choice): if the user requests skipping a phase:
   - "Confirm skip"
