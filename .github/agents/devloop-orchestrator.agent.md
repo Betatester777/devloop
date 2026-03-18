@@ -116,6 +116,22 @@ Use `vscode_askQuestions` for all structured user decisions:
   - "Cancel"
 - **Phase transition**: after each subagent completes and the quality gate passes, auto-transition to the next phase without prompting. Exception: in normal mode, transitions **into** Init, Requirements, or Architecture still prompt, and the Review presenter handles its own approval flow. In **YOLO mode**, all transitions are automatic — never prompt the user between phases or between bundles.
 
+### Post-subagent accept/improve
+
+When a subagent is invoked via `runSubagent`, it cannot call `vscode_askQuestions` itself. After such a subagent returns, the **orchestrator** is responsible for presenting the accept/improve prompt on behalf of the subagent, using the same question format defined in that agent's User Interaction section.
+
+Phases that require accept/improve after the subagent returns:
+
+| Phase | Prompt |
+|---|---|
+| Requirements | "Accept — PRD is ready for architecture" / "Improve — I have feedback" |
+| Architecture | "Accept — architecture is ready for planning" / "Improve — I have feedback" |
+| Testing | "Accept — test results are ready for review" / "Improve — I have feedback" |
+
+Phases that handle their own prompts or need none: Planning (bundle selection only), Implementation (no prompt), Review (review-presenter handles approval), Release (release-manager handles version/audience).
+
+In **YOLO mode**, skip all accept/improve prompts — auto-accept and transition immediately.
+
 ### YOLO mode
 
 When `docs/STATE.md` has `## YOLO Mode` set to `Enabled`:

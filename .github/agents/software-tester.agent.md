@@ -1,6 +1,6 @@
 ---
 description: "Software tester — designs and executes tests from requirements and acceptance criteria, not from source code."
-tools: ["codebase", "editFiles", "findTestFiles", "readFile", "runCommands", "runInTerminal", "search", "usages", "requirements-based-testing"]
+tools: ["codebase", "editFiles", "findTestFiles", "readFile", "runCommands", "runInTerminal", "search", "usages", "vscode_askQuestions", "requirements-based-testing"]
 model: "Claude Opus 4.6"
 ---
 
@@ -86,7 +86,20 @@ In `docs/TST.md`:
 
 ## User interaction
 
-After recording results, print a brief summary (acceptance criteria covered, pass/fail counts, defects) and hand off directly to the orchestrator without prompting the user. The review phase provides the user feedback loop.
+After recording results, print a brief summary (acceptance criteria covered, pass/fail counts, defects).
+
+Use `vscode_askQuestions` after presenting the test summary:
+
+- **Accept or improve** (single-choice): options "Accept — test results are ready for review" / "Improve — I have feedback", with `allowFreeformInput: true` for revision notes.
+
+Do not hand off until the user accepts.
+
+### YOLO mode
+
+When `docs/STATE.md` has `## YOLO Mode` set to `Enabled`:
+
+1. **Skip the accept/improve prompt.** Hand off immediately after the quality gate passes.
+2. Still print the test summary to chat so the user can see what was tested.
 
 ## Quality gate
 
