@@ -27,7 +27,7 @@ Invoked by the review presenter during the Review phase.
 
 ### Assembling the review package
 
-1. Copy `.github/templates/REV.md` to `docs/REV.md` (or overwrite if from a previous bundle).
+1. Copy `templates/REV.md` to `docs/REV.md` (or overwrite if from a previous bundle).
 2. Read `docs/PLN.md` for the active bundle name, task list, and completion status.
 3. Read `docs/TST.md` for test results, defects, and evidence.
 4. Inspect the codebase for the list of changed files.

@@ -33,7 +33,7 @@ Always print this heading first, before any other output.
 2. Read `docs/TST.md` for test results, pass/fail counts, and defects.
 3. Read `docs/ARC.md` for flagged risks and technical decisions.
 4. Scan the implemented code to produce a concise change summary.
-5. Use the `review-packaging` skill (`.github/skills/review-packaging/SKILL.md`) to assemble `docs/REV.md`.
+5. Use the `review-packaging` skill (`.claude/skills/review-packaging/SKILL.md`) to assemble `docs/REV.md`.
 6. Fill each section of `docs/REV.md`:
    - **Summary**: one paragraph describing what this increment delivers and why. Include the REQ-N ID.
    - **Changes**: table of files changed with Traces column listing AC-N.M IDs.

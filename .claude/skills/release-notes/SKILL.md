@@ -28,7 +28,7 @@ Invoked by the release manager during the Release phase.
 
 ### Creating release notes
 
-1. Copy `.github/templates/REL.md` to `docs/REL.md` (or append a new version section if the file already has prior releases).
+1. Copy `templates/REL.md` to `docs/REL.md` (or append a new version section if the file already has prior releases).
 2. Read `docs/REV.md` for the increment summary, changes, and test results.
 3. Determine the version number (`major.minor.sub`). If the user confirmed a version during the ask-tool interaction, use that. Otherwise:
    - First release → `0.1.0`

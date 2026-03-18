@@ -32,7 +32,7 @@ Always print this heading first, before any other output.
 2. Read `docs/PLN.md` for the bundle details and acceptance criteria.
 3. Read `docs/PRD.md` for the broader requirement context and user-facing language.
 4. Confirm the version number with the user (using AskUserQuestion). In **YOLO mode**, skip the prompt and auto-increment the minor version.
-5. Use the `release-notes` skill (`.github/skills/release-notes/SKILL.md`) to assemble `docs/REL.md`.
+5. Use the `release-notes` skill (`.claude/skills/release-notes/SKILL.md`) to assemble `docs/REL.md`.
 6. Fill each section:
    - **Version and date**: confirmed version number and today's date.
    - **What's new**: bullet list of user-visible changes. Write from the user's perspective. Reference the **REQ-N** ID for each item.

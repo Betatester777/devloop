@@ -2,7 +2,7 @@ Start a new DevLoop workflow — capture user request, set up constraints, and b
 
 1. Check whether `docs/STATE.md` already exists. If it does, warn the user that a workflow is already in progress and ask whether to continue it instead or start fresh (which requires cleanup first).
 2. If no workflow is active, read `BASE_CONFIG.md` for constraints and stack.
-3. Use the AskUserQuestion tool to capture the user's request into `docs/input/user_request.md` (copy from `.github/templates/input/user_request.md`) — ask four questions:
+3. Use the AskUserQuestion tool to capture the user's request into `docs/input/user_request.md` (copy from `templates/input/user_request.md`) — ask four questions:
    - **Project name** (freeform)
    - **Project summary** (freeform — one-sentence description)
    - **Requirements** (freeform — structured list or prose; top-level items become bundles, sub-items become acceptance criteria)

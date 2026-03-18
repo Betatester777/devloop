@@ -26,7 +26,7 @@ Invoked by the task planner during the Increment cycle setup, or when replanning
 
 ### Creating a new plan
 
-1. Copy `.github/templates/PLN.md` to `docs/PLN.md` (or overwrite the Active Bundle section if the file exists from a previous bundle).
+1. Copy `templates/PLN.md` to `docs/PLN.md` (or overwrite the Active Bundle section if the file exists from a previous bundle).
 2. Read `docs/ARC.md` for modules, interfaces, and technical decisions.
 3. Read `docs/PRD.md` for the feature bundle list and acceptance criteria.
 4. Select the next pending bundle (or the one confirmed by the user).

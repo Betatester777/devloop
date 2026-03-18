@@ -39,12 +39,12 @@ The user accepts only tested, runnable increments.
 | `AGENTS.md` | Agent roster, roles, skills, document ownership |
 | `docs/STATE.md` | Current workflow phase and active bundle (if present) |
 | `.claude/agents/<name>.md` | Sub-agent definitions with prompts and quality gates |
-| `.github/skills/<name>/SKILL.md` | Reusable procedures referenced by agents |
+| `.claude/skills/<name>/SKILL.md` | Reusable procedures referenced by agents |
 | `.claude/commands/<name>.md` | Slash commands for common workflow operations |
 
 ## Document creation
 
-Workflow documents (`docs/*.md`) do **not** exist at the start of a project. Templates live in `.github/templates/`. When an agent needs to create its output document, it copies the matching template into `docs/` and fills it in. Never commit empty templates into `docs/`.
+Workflow documents (`docs/*.md`) do **not** exist at the start of a project. Templates live in `templates/`. When an agent needs to create its output document, it copies the matching template into `docs/` and fills it in. Never commit empty templates into `docs/`.
 
 ## Rules for all agents
 

@@ -17,7 +17,7 @@ This file defines the agent roster, their roles, and document ownership.
 
 ## Agent definitions
 
-Each agent has a detailed definition in `.github/agents/<name>.agent.md`.
+Each agent has a detailed definition in `.claude/agents/<name>.md`.
 
 ## Phase banners
 
@@ -50,7 +50,7 @@ Every agent prints a phase banner as the first line of every response:
 
 ## Skills
 
-Skills are reusable procedures that agents invoke via the `tools:` frontmatter in their `.agent.md` files. Each skill lives in `.github/skills/<name>/SKILL.md`.
+Skills are reusable procedures that agents reference from their definition files. Each skill lives in `.claude/skills/<name>/SKILL.md`.
 
 | Skill | Used by | Purpose |
 |---|---|---|

@@ -32,13 +32,13 @@ Always print this heading first, before any other output.
 1. Read `docs/PLN.md` for the active bundle and its acceptance criteria.
 2. Read `docs/PRD.md` for the full requirement context.
 3. Read `docs/ARC.md` for interface constraints and boundary conditions.
-4. Use the `requirements-based-testing` skill (`.github/skills/requirements-based-testing/SKILL.md`) to design test cases.
+4. Use the `requirements-based-testing` skill (`.claude/skills/requirements-based-testing/SKILL.md`) to design test cases.
 5. For each acceptance criterion, write at least one test case.
 6. Add edge cases derived from interface constraints in `docs/ARC.md`.
 7. Write test code in `tests/` following the coding rules below.
 8. Run all tests: `pytest tests/ -v`
 9. Run lint: `ruff check .`
-10. Copy `.github/templates/TST.md` to `docs/TST.md` (or update if it exists).
+10. Copy `templates/TST.md` to `docs/TST.md` (or update if it exists).
 11. Record results, defects, and evidence in `docs/TST.md`.
 
 ### Test design rules

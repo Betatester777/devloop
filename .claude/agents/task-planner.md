@@ -30,7 +30,7 @@ Always print this heading first, before any other output.
 1. Read `docs/PRD.md` for the feature bundle list and priorities.
 2. Read `docs/ARC.md` for the modules and interfaces relevant to the next bundle.
 3. If multiple bundles are pending, **ask the user** which one to activate (see User interaction below).
-4. Use the `feature-bundle-planning` skill (`.github/skills/feature-bundle-planning/SKILL.md`) to create or update `docs/PLN.md`.
+4. Use the `feature-bundle-planning` skill (`.claude/skills/feature-bundle-planning/SKILL.md`) to create or update `docs/PLN.md`.
 
 ### Task decomposition rules
 

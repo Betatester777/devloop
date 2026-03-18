@@ -10,7 +10,7 @@ The user is providing a pre-structured request with some or all of the following
 
 1. Check whether `docs/STATE.md` already exists. If it does, warn the user and ask whether to continue or start fresh.
 2. Read `BASE_CONFIG.md` for constraints.
-3. Capture the structured input verbatim into `docs/input/user_request.md` (copy from `.github/templates/input/user_request.md`).
+3. Capture the structured input verbatim into `docs/input/user_request.md` (copy from `templates/input/user_request.md`).
 4. Set `docs/STATE.md` to phase `Init`.
 5. Transition to Requirements and invoke the product manager sub-agent (`.claude/agents/product-manager.md`).
 

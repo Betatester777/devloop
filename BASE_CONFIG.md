@@ -20,7 +20,8 @@
 | `src/assets/` | Game assets: images, sounds, fonts, and manifests |
 | `docs/` | Workflow documents (created by agents from templates) |
 | `releases/` | Versioned release archives (`releases/v<major.minor.sub>/`) |
-| `.github/` | Agent definitions, skills, prompts, and templates |
+| `.claude/` | Agent definitions, skills, and slash commands |
+| `templates/` | Document templates (copied to `docs/` by agents) |
 
 ## Quality gates
 

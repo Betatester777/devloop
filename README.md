@@ -312,12 +312,11 @@ graph TD
 │   └── v0.1.0/
 │       ├── release-v0.1.0.zip
 │       └── REL.md
-├── .claude/
-│   ├── commands/           # Slash commands for Claude Code (/devloop-start, etc.)
-│   └── agents/             # Sub-agent definitions (.md)
-└── .github/
-    ├── skills/             # Reusable skill procedures (SKILL.md)
-    └── templates/          # Document templates (copied to docs/)
+├── templates/              # Document templates (copied to docs/ by agents)
+└── .claude/
+    ├── commands/           # Slash commands for Claude Code (/devloop-start, etc.)
+    ├── agents/             # Sub-agent definitions (.md)
+    └── skills/             # Reusable skill procedures (SKILL.md)
 ```
 
 ## Stack

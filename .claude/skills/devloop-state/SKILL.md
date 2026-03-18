@@ -40,7 +40,7 @@ Invoked by the orchestrator at the start of every phase transition and at sessio
 
 ### Writing state
 
-1. Copy `.github/templates/STATE.md` to `docs/STATE.md` if it does not exist.
+1. Copy `templates/STATE.md` to `docs/STATE.md` if it does not exist.
 2. Fill in all fields:
    - **Current Phase**: one of `Init`, `Requirements`, `Architecture`, `Increment cycle`, `Review`, `Release`
    - **YOLO Mode**: `Enabled` or `Disabled` (default `Disabled`). When Enabled, reviews auto-approve and releases run after every cycle.

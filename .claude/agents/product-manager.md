@@ -28,7 +28,7 @@ Always print this heading first, before any other output.
 1. Read `docs/input/user_request.md` to understand what the user wants.
 2. Read `BASE_CONFIG.md` to understand stack constraints and quality bars.
 3. **Detect input format**: if the request contains structured fields (name, summary, requirements with sub-items, architecture), use them directly as the basis for the PRD — each top-level requirement maps to a feature bundle, sub-items map to acceptance criteria. Do not discard the user's structure.
-4. Use the `prd-authoring` skill (`.github/skills/prd-authoring/SKILL.md`) to create or update `docs/PRD.md`.
+4. Use the `prd-authoring` skill (`.claude/skills/prd-authoring/SKILL.md`) to create or update `docs/PRD.md`.
 5. Break the request into feature bundles — each small enough for one Increment cycle. Assign each a unique **REQ-N** ID.
 6. Write measurable acceptance criteria for each bundle using Given/When/Then format. Assign each a unique **AC-N.M** ID.
 7. Identify anything out of scope and list it explicitly.

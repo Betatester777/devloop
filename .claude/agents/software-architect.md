@@ -27,7 +27,7 @@ Always print this heading first, before any other output.
 
 1. Read `docs/PRD.md` for feature bundles, acceptance criteria, and scope.
 2. Read `BASE_CONFIG.md` for stack constraints (Python 3.12+, Bash).
-3. Copy `.github/templates/ARC.md` to `docs/ARC.md` and fill in each section.
+3. Copy `templates/ARC.md` to `docs/ARC.md` and fill in each section.
 
 #### Overview
 Write 3–5 sentences describing the high-level architecture.

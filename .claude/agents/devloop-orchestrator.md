@@ -43,7 +43,7 @@ Always print the banner first, before any other output.
 
 ## On every invocation
 
-1. **Read state**: use the `devloop-state` skill (`.github/skills/devloop-state/SKILL.md`) to read `docs/STATE.md` or infer the current phase.
+1. **Read state**: use the `devloop-state` skill (`.claude/skills/devloop-state/SKILL.md`) to read `docs/STATE.md` or infer the current phase.
 2. **Determine next phase**: consult the transition table in `BASE_CONFIG.md`.
 3. **Validate preconditions**: check that the previous phase's output document exists and passes its quality gate.
 4. **Invoke sub-agent**: delegate to exactly one sub-agent using the Agent tool:

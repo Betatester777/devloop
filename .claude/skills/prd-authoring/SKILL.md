@@ -26,7 +26,7 @@ Invoked by the product manager during the Requirements phase.
 
 ### Creating a new PRD
 
-1. Copy `.github/templates/PRD.md` to `docs/PRD.md`.
+1. Copy `templates/PRD.md` to `docs/PRD.md`.
 2. Read `docs/input/user_request.md` for the raw request.
 3. Read `BASE_CONFIG.md` for stack constraints, forbidden actions, and quality gates.
 4. **Detect structured input**: if the request contains structured fields (name, summary, requirements with sub-items, architecture), use them as a head start:
