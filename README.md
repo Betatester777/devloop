@@ -86,7 +86,7 @@ stateDiagram-v2
 graph TB
     User([User]) -->|request| Orchestrator
 
-    subgraph Orchestrator["🎯 Orchestrator"]
+    subgraph Orchestrator["🤖 Orchestrator"]
         direction TB
         State["devloop-state skill"]
     end
