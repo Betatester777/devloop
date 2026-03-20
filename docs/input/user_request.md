@@ -6,7 +6,7 @@ name: Delicious Memory
 summary: A Python-based colorful interactive desktop memory matching game themed around delicious dishes, dining, and drinks.
 requirements:
 - colorful card-based gameplay
-  - board loads with hidden face-down rectangular cards arranged in a grid
+  - board loads with hidden face-down square cards arranged in a grid
   - cards flip with visible animation and show food artwork
   - matched pairs stay revealed, mismatched pairs flip back after delay
   - rapid input during flip animation is ignored to prevent race conditions

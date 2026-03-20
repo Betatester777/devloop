@@ -12,16 +12,16 @@ The user is providing a pre-structured request with some or all of the following
 2. Read `BASE_CONFIG.md` for constraints.
 3. Capture the structured input verbatim into `docs/input/user_request.md` (copy from `templates/input/user_request.md`).
 4. Set `docs/STATE.md` to phase `Init`.
-5. Transition to Requirements and invoke the product manager sub-agent (`.claude/agents/product-manager.md`).
+5. Transition to Requirements and invoke the requirements engineer sub-agent (`.claude/agents/requirements-engineer.md`).
 
-The product manager should recognize this as structured input and use it to accelerate PRD creation:
+The requirements engineer should recognize this as structured input and use it to accelerate PRD creation:
 - Each top-level requirement maps to a **feature bundle**.
 - Sub-items under each requirement map to **acceptance criteria**.
 - The architecture section informs technical constraints and should be cross-checked against `BASE_CONFIG.md`.
 
-The product manager still validates, fills gaps, and asks the user to confirm scope — but should not discard the structure the user provided.
+The requirements engineer still validates, fills gaps, and asks the user to confirm scope — but should not discard the structure the user provided.
 
-After the product manager returns, present accept/improve options as numbered text:
+After the requirements engineer returns, present accept/improve options as numbered text:
 - 1. Accept — PRD is ready for architecture
 - 2. Improve — I have feedback
 

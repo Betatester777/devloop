@@ -50,7 +50,7 @@ Always print the banner first, before any other output.
 3. **Validate preconditions**: check that the previous phase's output document exists and passes its quality gate.
 4. **Invoke sub-agent**: delegate to exactly one sub-agent using the Agent tool:
    - Init → (you handle this directly: capture user request, create `BASE_CONFIG.md`)
-   - Requirements → invoke `.claude/agents/product-manager.md`
+   - Requirements → invoke `.claude/agents/requirements-engineer.md`
    - Architecture → invoke `.claude/agents/software-architect.md`
    - Increment cycle (plan) → invoke `.claude/agents/task-planner.md`
    - Increment cycle (implement) → invoke `.claude/agents/software-developer.md`
@@ -83,7 +83,7 @@ When starting a new project or cycle:
 2. Write the responses into `docs/input/user_request.md`.
 3. If `BASE_CONFIG.md` does not already have project-specific values, update it with the stack from the user's architecture answer.
 4. Create `docs/STATE.md` with phase = `Init`.
-5. **Auto-transition**: update `docs/STATE.md` to phase `Requirements`, then **print the phase banner `# 📋 Requirements`** (this is mandatory), then invoke the product manager sub-agent. Do not wait for user input between Init and Requirements.
+5. **Auto-transition**: update `docs/STATE.md` to phase `Requirements`, then **print the phase banner `# 📋 Requirements`** (this is mandatory), then invoke the requirements engineer sub-agent. Do not wait for user input between Init and Requirements.
 
 ## Error handling
 
@@ -152,5 +152,6 @@ Before transitioning to the next phase, confirm:
 1. The owning sub-agent has updated its output document.
 2. The relevant quality gate condition (Ready / Pass / Accept, and Release if chosen) is met.
 3. No blockers remain unresolved.
+4. **Startup validation** (Implementation → Testing): if the bundle produces or modifies a runnable application, verify the app starts without errors before advancing. Use the start command from `## Validated Start Command` in `docs/PLN.md` (written by the developer). If absent, determine the correct command from PLN validation commands, test it, and write the section yourself. If the app fails to start, return to Implementation — do not advance to Testing or Review.
 
-Note: The developer performs a self-check (tests + lint) before handing off. The formal **Pass gate** is evaluated by the software tester. Both must succeed for the Increment cycle to advance to Review.
+Note: The developer performs a self-check (tests + lint + startup) before handing off. The formal **Pass gate** is evaluated by the software tester. Both must succeed for the Increment cycle to advance to Review.

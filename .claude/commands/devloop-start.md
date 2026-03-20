@@ -9,8 +9,8 @@ Start a new DevLoop workflow — capture user request, set up constraints, and b
    - **Architecture / stack** (freeform — languages, frameworks, platforms)
 4. Set `docs/STATE.md` to phase `Init`.
 5. Proceed through the Init phase: validate that constraints are clear, then transition to Requirements.
-6. Invoke the product manager sub-agent (`.claude/agents/product-manager.md`) to produce `docs/PRD.md` from the user's request.
-7. After the product manager returns, present accept/improve options as numbered text:
+6. Invoke the requirements engineer sub-agent (`.claude/agents/requirements-engineer.md`) to produce `docs/PRD.md` from the user's request.
+7. After the requirements engineer returns, present accept/improve options as numbered text:
    - 1. Accept — PRD is ready for architecture
    - 2. Improve — I have feedback
 

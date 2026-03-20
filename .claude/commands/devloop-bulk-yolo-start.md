@@ -12,10 +12,10 @@ The user is providing a pre-structured request with some or all of the following
 2. Read `BASE_CONFIG.md` for constraints.
 3. Capture the structured input verbatim into `docs/input/user_request.md` (copy from `templates/input/user_request.md`).
 4. Set `docs/STATE.md` to phase `Init` with **YOLO Mode: Enabled**.
-5. Transition to Requirements and invoke the product manager sub-agent (`.claude/agents/product-manager.md`).
+5. Transition to Requirements and invoke the requirements engineer sub-agent (`.claude/agents/requirements-engineer.md`).
 6. After PRD is complete, continue the full workflow automatically — Architecture, Increment cycle (Planning → Implementation → Testing), Review (auto-approve), and Release (mandatory) — without stopping for user approval.
 
-The product manager should recognize this as structured input:
+The requirements engineer should recognize this as structured input:
 - Each top-level requirement maps to a **feature bundle**.
 - Sub-items map to **acceptance criteria**.
 - The architecture section informs technical constraints.

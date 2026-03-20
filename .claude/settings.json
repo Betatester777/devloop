@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/ingo/.pyenv/versions/3.10.15/bin/**)",
+      "Bash(/home/ingo/.pyenv/versions/3.10.15/bin/pip install:*)",
+      "Bash(ruff check:*)",
+      "Bash(/home/ingo/.pyenv/versions/3.10.15/bin/ruff check:*)",
+      "Bash(SDL_VIDEODRIVER=dummy python -m pytest tests/test_theme.py tests/test_settings.py tests/test_display.py tests/test_focus_manager.py tests/test_main_menu.py tests/test_game_loop.py -v)",
+      "Bash(SDL_VIDEODRIVER=dummy pytest tests/test_theme.py tests/test_settings.py tests/test_display.py tests/test_focus_manager.py tests/test_main_menu.py tests/test_game_loop.py -v)",
+      "Bash(python3 -c \"import pygame; print\\(pygame.ver\\)\")",
+      "Bash(.venv/bin/python -c \"import pygame; print\\(''pygame'', pygame.ver\\)\")",
+      "Bash(SDL_VIDEODRIVER=dummy .venv/bin/python -m pytest tests/test_theme.py tests/test_settings.py tests/test_display.py tests/test_focus_manager.py tests/test_main_menu.py tests/test_game_loop.py -v)",
+      "Bash(zip -r releases/v0.1.0/release-v0.1.0.zip src/ docs/REL.md docs/REV.md --exclude '*.pyc' '__pycache__/*' '.venv/*')",
+      "Bash(google-chrome --headless --disable-gpu --print-to-pdf=\"/home/ingo/projects/devloop/docs/presentation.pdf\" --no-margins \"file:///home/ingo/projects/devloop/docs/presentation.html\")",
+      "Bash(google-chrome --headless --disable-gpu --print-to-pdf=\"/home/ingo/projects/devloop/docs/presentation.pdf\" --no-margins --landscape \"file:///home/ingo/projects/devloop/docs/presentation.html\")",
+      "Bash(source .venv/bin/activate)",
+      "Bash(pytest tests/ -v)"
+    ],
+    "additionalDirectories": [
+      "/home/ingo/projects/devloop/.claude/agents"
+    ]
+  }
+}

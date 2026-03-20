@@ -80,21 +80,22 @@ Identify risks honestly. Common categories:
 If no risks, write "No significant risks identified for this bundle."
 
 #### Demo Steps
-Provide copy-paste-ready commands the user can run to verify the increment:
+Provide copy-paste-ready commands the user can run to verify the increment.
 
+**Start command validation (mandatory for runnable applications):**
+Before writing demo steps, check `docs/PLN.md` for a `## Validated Start Command` section. If present, use that exact command — it was verified by the developer during implementation. If not present, determine the correct start command from `docs/PLN.md` validation commands and **test it yourself** by running it (e.g. with a timeout or quit signal) to confirm it does not crash. Never include a start command in demo steps without validating it first. A review package with a broken start command is invalid.
+
+Example:
 ```markdown
 1. Install dependencies (if any):
    pip install -r requirements.txt
 
 2. Run the tool:
-   python src/converter.py examples/sample.md -o /tmp/output.html
+   python -m src.main
 
-3. Open /tmp/output.html in a browser.
-
-4. Verify:
-   - Headings render as H1–H6 tags
-   - Code blocks have syntax highlighting
-   - Links are clickable
+3. Verify:
+   - The main window appears without errors
+   - Buttons are clickable and responsive
 ```
 
 Every demo step must be concrete — no "verify it works as expected".
@@ -116,4 +117,5 @@ Before handoff, verify:
 - [ ] Test Results match what's in `docs/TST.md`, including AC coverage count.
 - [ ] Risks section is present (even if "none identified").
 - [ ] Demo Steps are copy-paste-ready and tested.
+- [ ] **Start command validated**: if the increment is a runnable application, the start command in Demo Steps has been confirmed to launch without errors.
 - [ ] Approval Questions are stated as clear yes/no choices.

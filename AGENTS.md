@@ -7,7 +7,7 @@ This file defines the agent roster, their roles, and document ownership.
 | Agent | Role | Primary output |
 |---|---|---|
 | `orchestrator` | Reads state, selects the next valid phase, invokes sub-agents, validates output docs, enforces quality gates | `docs/STATE.md` |
-| `product-manager` | Converts raw user input into structured product requirements with REQ/AC IDs | `docs/PRD.md` |
+| `requirements-engineer` | Converts raw user input into structured product requirements with REQ/AC IDs | `docs/PRD.md` |
 | `software-architect` | Defines modules, interfaces, technical decisions, and risks | `docs/ARC.md` |
 | `task-planner` | Plans one active feature bundle with tasks, dependencies, and validation commands | `docs/PLN.md` |
 | `software-developer` | Implements the active bundle — code, unit tests, inline docs | Code and tests |
@@ -42,7 +42,7 @@ All user-facing prompts are handled by the **orchestrator**, not by sub-agents. 
 
 | Agent | Normal mode | YOLO mode |
 |---|---|---|
-| Product Manager | Orchestrator asks accept/improve after PRD | Auto-accept |
+| Requirements Engineer | Orchestrator asks accept/improve after PRD | Auto-accept |
 | Software Architect | Orchestrator asks accept/improve after design | Auto-accept |
 | Task Planner | Orchestrator asks bundle selection (if ambiguous) | Auto-select next |
 | Software Developer | No prompts — auto-handoff | — |
@@ -57,7 +57,7 @@ Skills are reusable procedures that agents reference from their definition files
 | Skill | Used by | Purpose |
 |---|---|---|
 | `devloop-state` | `orchestrator` | Read and write workflow state from document files |
-| `prd-authoring` | `product-manager` | Author and update `docs/PRD.md` with feature bundles and acceptance criteria using REQ-N / AC-N.M IDs |
+| `prd-authoring` | `requirements-engineer` | Author and update `docs/PRD.md` with feature bundles and acceptance criteria using REQ-N / AC-N.M IDs |
 | `feature-bundle-planning` | `task-planner` | Create and update `docs/PLN.md` with tasks, dependencies, and validation commands; trace tasks to AC IDs |
 | `requirements-based-testing` | `software-tester` | Design tests from requirements and acceptance criteria; trace tests to AC IDs |
 | `review-packaging` | `review-presenter` | Assemble a review package with change summary, AC traceability, risks, test results, and approval questions |
@@ -83,7 +83,7 @@ Each document has exactly one owning agent. Only the owner creates or makes stru
 |---|---|
 | `docs/input/user_request.md` | `orchestrator` (initial capture) |
 | `BASE_CONFIG.md` | `orchestrator` |
-| `docs/PRD.md` | `product-manager` |
+| `docs/PRD.md` | `requirements-engineer` |
 | `docs/ARC.md` | `software-architect` |
 | `docs/PLN.md` | `task-planner` |
 | `docs/TST.md` | `software-tester` |

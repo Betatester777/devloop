@@ -25,3 +25,7 @@ Thumbs.db
 
 # VS Code workspace settings
 .vscode/
+.venv
+
+# Release zip archives (too large for GitHub without LFS)
+releases/**/*.zip

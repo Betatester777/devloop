@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DevLoop Orchestrator</title>
+<title>DevLoop: Agentic Software Engineering</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -14,6 +14,7 @@
     --n100: #fbfbfb; --n100b: #ededed; --n100bb: #d6d6d6;
     --n200: #f3f5f3; --n200b: #e2e4e2; --n300: #edefee;
     --n400: #dcdfdc; --n500: #b2b4b5; --n600: #919394; --n700: #707375;
+    --c-accent: #0284c7; --c-warning: #d97706; --c-error: #dc2626;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -44,72 +45,73 @@
     text-align: center;
     align-items: center;
   }
-  .slide-title h1 { font-size: 4em; font-weight: 700; margin-bottom: 16px; letter-spacing: -1px; }
-  .slide-title p { font-size: 1.5em; font-weight: 300; opacity: 0.9; max-width: 700px; line-height: 1.5; }
+  .slide-title h1 { font-size: 4em; font-weight: 700; margin-bottom: 24px; letter-spacing: -1px; }
+  .slide-title p { font-size: 1.4em; font-weight: 300; opacity: 0.95; max-width: 800px; line-height: 1.6; }
   .slide-title .badge {
-    margin-top: 40px;
-    padding: 10px 28px;
-    border: 2px solid rgba(255,255,255,0.4);
+    margin-top: 48px;
+    padding: 12px 32px;
+    border: 2px solid rgba(255,255,255,0.5);
     border-radius: 100px;
-    font-size: 0.95em;
-    font-weight: 500;
-    letter-spacing: 1px;
+    font-size: 0.9em;
+    font-weight: 600;
+    letter-spacing: 1.2px;
   }
 
   /* Content slides */
   .slide-content { background: var(--n100); }
   .slide-content h2 {
-    font-size: 2.6em; font-weight: 700; color: var(--g800);
-    margin-bottom: 8px; letter-spacing: -0.5px;
+    font-size: 2.8em; font-weight: 700; color: var(--g800);
+    margin-bottom: 12px; letter-spacing: -0.5px;
+    border-bottom: 3px solid var(--g300);
+    padding-bottom: 16px;
   }
   .slide-content .subtitle {
-    font-size: 1.15em; color: var(--n600); margin-bottom: 40px; font-weight: 400;
+    font-size: 1.1em; color: var(--n700); margin-bottom: 36px; font-weight: 400; line-height: 1.5;
   }
 
   /* Cards grid */
-  .cards { display: grid; gap: 20px; flex: 1; align-content: start; }
+  .cards { display: grid; gap: 24px; flex: 1; align-content: start; }
   .cards-2 { grid-template-columns: 1fr 1fr; }
   .cards-3 { grid-template-columns: 1fr 1fr 1fr; }
   .cards-4 { grid-template-columns: 1fr 1fr; }
 
   .card {
     background: white;
-    border-radius: 16px;
-    padding: 28px 32px;
-    border: 1px solid var(--n300);
-    transition: box-shadow 0.2s;
+    border-radius: 14px;
+    padding: 32px;
+    border: 2px solid var(--n300);
+    transition: all 0.25s;
   }
-  .card:hover { box-shadow: 0 4px 20px rgba(0,86,35,0.08); }
-  .card .icon { font-size: 1.8em; margin-bottom: 12px; }
-  .card h3 { font-size: 1.15em; font-weight: 600; color: var(--g900); margin-bottom: 8px; }
-  .card p { font-size: 0.95em; color: var(--n700); line-height: 1.6; }
+  .card:hover { border-color: var(--g400); box-shadow: 0 6px 24px rgba(0,86,35,0.1); }
+  .card .icon { font-size: 2.2em; margin-bottom: 16px; display: block; }
+  .card h3 { font-size: 1.2em; font-weight: 700; color: var(--g900); margin-bottom: 12px; }
+  .card p { font-size: 0.95em; color: var(--n700); line-height: 1.7; }
 
   /* Phase flow */
   .phase-flow {
-    display: flex; align-items: center; gap: 0; flex-wrap: wrap;
-    justify-content: center; margin: 20px 0;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    justify-content: center; margin: 24px 0;
   }
   .phase-item {
     display: flex; flex-direction: column; align-items: center;
-    padding: 18px 20px; border-radius: 14px; min-width: 120px;
-    background: white; border: 2px solid var(--g100);
+    padding: 16px 18px; border-radius: 12px; min-width: 110px;
+    background: white; border: 2px solid var(--g200);
     text-align: center;
   }
-  .phase-item .icon { font-size: 1.6em; margin-bottom: 6px; }
-  .phase-item .label { font-size: 0.85em; font-weight: 600; color: var(--g800); }
-  .phase-item .desc { font-size: 0.75em; color: var(--n600); margin-top: 4px; }
-  .phase-arrow { font-size: 1.4em; color: var(--g400); margin: 0 6px; }
-  .phase-item.highlight { background: var(--g15); border-color: var(--g400); }
+  .phase-item .icon { font-size: 1.6em; margin-bottom: 8px; }
+  .phase-item .label { font-size: 0.85em; font-weight: 700; color: var(--g800); }
+  .phase-item .desc { font-size: 0.72em; color: var(--n600); margin-top: 4px; }
+  .phase-arrow { font-size: 1.2em; color: var(--g400); margin: 0 4px; font-weight: 700; }
 
   /* Gate bar */
   .gate-bar {
-    display: flex; gap: 0; margin: 24px 0; border-radius: 14px; overflow: hidden;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 28px 0;
   }
   .gate-step {
-    flex: 1; padding: 24px 28px; color: white; position: relative;
+    padding: 24px; color: white; border-radius: 12px; text-align: center;
   }
-  .gate-step h4 { font-size: 1.1em; font-weight: 600; margin-bottom: 6px; }
-  .gate-step p { font-size: 0.88em; opacity: 0.9; line-height: 1.5; }
+  .gate-step h4 { font-size: 1.05em; font-weight: 700; margin-bottom: 8px; }
+  .gate-step p { font-size: 0.9em; opacity: 0.95; line-height: 1.5; }
   .gate-step:nth-child(1) { background: var(--g800); }
   .gate-step:nth-child(2) { background: var(--g600); }
   .gate-step:nth-child(3) { background: var(--g400); }
@@ -118,34 +120,66 @@
   /* List style */
   .styled-list { list-style: none; padding: 0; }
   .styled-list li {
-    padding: 14px 20px; margin-bottom: 8px; border-radius: 10px;
+    padding: 14px 22px; margin-bottom: 10px; border-radius: 10px;
     background: white; border-left: 4px solid var(--g500);
-    font-size: 1em; color: #333; line-height: 1.5;
+    font-size: 0.98em; color: #333; line-height: 1.6;
   }
-  .styled-list li strong { color: var(--g800); }
+  .styled-list li strong { color: var(--g800); font-weight: 700; }
+  .styled-list li code { background: var(--n200); padding: 2px 6px; border-radius: 4px; font-family: monospace; }
 
   /* Agent row */
-  .agent-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .agent-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
   .agent-row {
-    display: grid; grid-template-columns: 48px 160px 1fr 200px;
-    align-items: center; gap: 16px; padding: 14px 20px;
-    background: white; border-radius: 12px; border: 1px solid var(--n300);
+    display: grid; grid-template-columns: 52px 160px 1fr 180px;
+    align-items: center; gap: 20px; padding: 16px 24px;
+    background: white; border-radius: 10px; border: 2px solid var(--n300);
   }
-  .agent-row .emoji { font-size: 1.5em; text-align: center; }
-  .agent-row .name { font-weight: 600; color: var(--g800); font-size: 0.95em; }
-  .agent-row .role { color: var(--n700); font-size: 0.9em; }
+  .agent-row .emoji { font-size: 1.8em; text-align: center; }
+  .agent-row .name { font-weight: 700; color: var(--g800); font-size: 0.98em; }
+  .agent-row .role { color: var(--n700); font-size: 0.9em; line-height: 1.5; }
   .agent-row .output {
     font-size: 0.8em; background: var(--g15); color: var(--g800);
-    padding: 4px 12px; border-radius: 6px; text-align: center; font-weight: 500;
+    padding: 6px 14px; border-radius: 6px; text-align: center; font-weight: 600;
   }
 
   /* Highlight box */
   .highlight-box {
-    background: var(--g15); border: 2px solid var(--g100); border-radius: 14px;
-    padding: 24px 32px; margin-top: 24px;
+    background: var(--g15); border: 2px solid var(--g300); border-radius: 12px;
+    padding: 28px; margin-top: 20px;
   }
-  .highlight-box h4 { color: var(--g800); font-size: 1em; margin-bottom: 8px; }
-  .highlight-box p { color: var(--n700); font-size: 0.95em; line-height: 1.6; }
+  .highlight-box h4 { color: var(--g800); font-size: 1.05em; margin-bottom: 10px; font-weight: 700; }
+  .highlight-box p { color: var(--n700); font-size: 0.95em; line-height: 1.7; }
+
+  /* SVG diagram container */
+  .svg-diagram-wrap {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0; flex: 1; min-height: 0; width: 100%;
+  }
+  .diagram-svg {
+    width: 100%;
+    max-width: 1430px;
+    height: auto;
+    max-height: 70vh;
+  }
+
+  /* Phase timeline */
+  .phase-timeline {
+    display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px;
+    margin-top: 20px; flex: 1; align-content: start;
+  }
+  .phase-timeline-item {
+    display: flex; flex-direction: column; gap: 8px;
+    background: white; border: 2px solid var(--g200); border-radius: 10px;
+    padding: 16px; text-align: center;
+  }
+  .phase-timeline-item .phase-title { font-weight: 700; color: var(--g800); font-size: 0.95em; }
+  .phase-timeline-item .phase-owner { color: var(--n600); font-size: 0.8em; }
+  .phase-timeline-item .phase-output { background: var(--g15); color: var(--g800); padding: 4px 8px; border-radius: 4px; font-size: 0.75em; font-weight: 600; margin-top: 4px; }
+  .phase-timeline-item .phase-gate { color: var(--c-accent); font-size: 0.78em; font-weight: 600; margin-top: 4px; }
+
+  /* Two column */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .two-col .col h3 { color: var(--g800); font-size: 1.15em; margin-bottom: 18px; font-weight: 700; border-bottom: 2px solid var(--g200); padding-bottom: 12px; }
 
   /* Navigation */
   .nav {
@@ -157,52 +191,61 @@
     background: white; color: var(--g700); font-size: 1.2em; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     transition: all 0.2s;
+    font-weight: 700;
   }
   .nav button:hover { background: var(--g500); color: white; }
+
   .slide-footer {
     position: fixed; bottom: 0; left: 0; right: 0;
     display: flex; justify-content: space-between; align-items: center;
-    padding: 12px 40px;
-    font-size: 0.75em; color: var(--n600); font-weight: 500;
-    background: rgba(255,255,255,0.9); backdrop-filter: blur(4px);
-    border-top: 1px solid var(--n300);
+    padding: 14px 40px;
+    font-size: 0.8em; color: var(--n700); font-weight: 600;
+    background: rgba(255,255,255,0.95); backdrop-filter: blur(4px);
+    border-top: 2px solid var(--n300);
   }
   .footer-title { color: var(--g800); }
   .footer-page { color: var(--n700); }
 
   /* Agenda */
-  .agenda-list { list-style: none; padding: 0; max-width: 700px; }
+  .agenda-list { list-style: none; padding: 0; max-width: 900px; margin: 0 auto; }
   .agenda-list li {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 16px 24px; margin-bottom: 6px; border-radius: 12px;
-    background: white; border: 1px solid var(--n300);
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 16px 24px; margin-bottom: 8px; border-radius: 10px;
+    background: white; border: 2px solid var(--n300);
     cursor: pointer; transition: all 0.2s;
   }
   .agenda-list li:hover { border-color: var(--g400); background: var(--g15); }
-  .agenda-list li .agenda-title { font-weight: 600; color: var(--g900); font-size: 1.05em; }
+  .agenda-list li .agenda-title { font-weight: 700; color: var(--g900); font-size: 1.02em; }
   .agenda-list li .agenda-page {
-    font-size: 0.85em; color: var(--n600); font-weight: 500;
-    background: var(--n200); padding: 2px 12px; border-radius: 10px;
+    font-size: 0.85em; color: var(--n600); font-weight: 600;
+    background: var(--n200); padding: 4px 12px; border-radius: 6px;
   }
 
-  /* Divider slide */
-  .slide-divider {
-    background: linear-gradient(135deg, var(--g800), var(--g500));
-    color: white; text-align: center; align-items: center;
-  }
-  .slide-divider h2 { font-size: 3em; font-weight: 700; }
-  .slide-divider p { font-size: 1.2em; opacity: 0.85; margin-top: 12px; }
-
-  /* Increment cycle */
+  /* Cycle box */
   .cycle-box {
-    background: white; border: 2px solid var(--g200); border-radius: 16px;
-    padding: 32px; margin: 20px 0; text-align: center;
+    background: white; border: 2px solid var(--g200); border-radius: 12px;
+    padding: 28px; margin: 20px 0; text-align: center;
   }
-  .cycle-box h4 { color: var(--g800); margin-bottom: 16px; font-size: 1.1em; }
+  .cycle-box h4 { color: var(--g800); margin-bottom: 16px; font-size: 1.08em; font-weight: 700; }
 
-  /* Two column */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-  .two-col .col h3 { color: var(--g800); font-size: 1.2em; margin-bottom: 16px; }
+  /* Print */
+  @media print {
+    @page { size: landscape; margin: 0; }
+    body { overflow: visible; height: auto; }
+    .slide {
+      display: flex !important;
+      width: 100vw;
+      height: 100vh;
+      page-break-after: always;
+      break-after: page;
+      padding: 40px 60px;
+      font-size: 0.85em;
+    }
+    .slide:last-of-type { page-break-after: avoid; }
+    .slide-footer { display: none !important; }
+    .nav { display: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -210,8 +253,8 @@
 <!-- Slide 1: Title -->
 <div class="slide slide-title active" id="s1">
   <h1>DevLoop</h1>
-  <p>An AI-powered workflow that turns ideas into tested, shippable software — one small increment at a time.</p>
-  <div class="badge">DOCUMENT-DRIVEN &middot; PHASE-GATED &middot; FULLY TRACEABLE</div>
+  <p>A governed agentic software engineering workflow that turns intent into tested, traceable, releasable increments.</p>
+  <div class="badge">ORCHESTRATED · EVIDENCE-GATED · TRACEABLE</div>
 </div>
 
 <!-- Slide 2: Agenda -->
@@ -219,397 +262,628 @@
   <h2>Agenda</h2>
   <p class="subtitle">What we'll cover</p>
   <ul class="agenda-list">
-    <li onclick="goTo(2)"><span class="agenda-title">What is DevLoop?</span><span class="agenda-page">1</span></li>
-    <li onclick="goTo(3)"><span class="agenda-title">The Agents</span><span class="agenda-page">2</span></li>
-    <li onclick="goTo(6)"><span class="agenda-title">Skills</span><span class="agenda-page">5</span></li>
-    <li onclick="goTo(8)"><span class="agenda-title">The Workflow</span><span class="agenda-page">7</span></li>
-    <li onclick="goTo(11)"><span class="agenda-title">Quality Gates &amp; Documents</span><span class="agenda-page">10</span></li>
-    <li onclick="goTo(13)"><span class="agenda-title">YOLO Mode</span><span class="agenda-page">12</span></li>
-    <li onclick="goTo(14)"><span class="agenda-title">Getting Started</span><span class="agenda-page">13</span></li>
+    <li onclick="goTo(2)"><span class="agenda-title">The Problem</span><span class="agenda-page">1</span></li>
+    <li onclick="goTo(3)"><span class="agenda-title">Operating Model</span><span class="agenda-page">2</span></li>
+    <li onclick="goTo(4)"><span class="agenda-title">System Roles</span><span class="agenda-page">3</span></li>
+    <li onclick="goTo(5)"><span class="agenda-title">Governance & Control Flow</span><span class="agenda-page">4</span></li>
+    <li onclick="goTo(6)"><span class="agenda-title">Lifecycle Phases</span><span class="agenda-page">5</span></li>
+    <li onclick="goTo(7)"><span class="agenda-title">Phase State Machine</span><span class="agenda-page">6</span></li>
+    <li onclick="goTo(8)"><span class="agenda-title">Phase Ownership &amp; Gates</span><span class="agenda-page">7</span></li>
+    <li onclick="goTo(9)"><span class="agenda-title">Traceability Model</span><span class="agenda-page">8</span></li>
+    <li onclick="goTo(10)"><span class="agenda-title">Evidence Gates</span><span class="agenda-page">9</span></li>
+    <li onclick="goTo(11)"><span class="agenda-title">Modes of Operation</span><span class="agenda-page">10</span></li>
+    <li onclick="goTo(12)"><span class="agenda-title">Getting Started</span><span class="agenda-page">11</span></li>
   </ul>
 </div>
 
-<!-- Slide 3: What is DevLoop? -->
+<!-- Slide 3: The Problem -->
 <div class="slide slide-content" id="s3">
-  <h2>What is DevLoop?</h2>
-  <p class="subtitle">A structured workflow where AI agents collaborate to build software</p>
+  <h2>The Problem</h2>
+  <p class="subtitle">Why governance matters in agentic software engineering</p>
   <div class="cards cards-2">
     <div class="card">
-      <div class="icon">📄</div>
-      <h3>Document-Driven</h3>
-      <p>Every decision, requirement, and design lives in a document. Nothing is implicit. Documents are the single source of truth that all agents follow.</p>
+      <div class="icon">⚡</div>
+      <h3>Generation is fast, but review is hard</h3>
+      <p>AI agents can produce code, tests, and documentation quickly. Without orchestration, output quality is inconsistent and reviewing every change becomes a bottleneck.</p>
     </div>
     <div class="card">
-      <div class="icon">🚦</div>
-      <h3>Phase-Gated</h3>
-      <p>Work progresses through defined phases. Each transition requires a quality gate to pass — no skipping steps, no cutting corners.</p>
+      <div class="icon">🔀</div>
+      <h3>Intent and implementation can drift</h3>
+      <p>When design decisions, requirements, and code are not explicitly linked, teams lose traceability. Changes happen in isolation, and verification becomes unreliable.</p>
     </div>
     <div class="card">
-      <div class="icon">🔗</div>
-      <h3>Fully Traceable</h3>
-      <p>Every requirement gets a unique ID that flows through plans, code, tests, and releases. You can trace any feature from idea to delivery.</p>
+      <div class="icon">❌</div>
+      <h3>Unconstrained autonomy is risky</h3>
+      <p>Without evidence-based gates, incorrect code or untested changes can propagate downstream. Scope, quality, and release discipline erode.</p>
     </div>
     <div class="card">
-      <div class="icon">📦</div>
-      <h3>Small Increments</h3>
-      <p>Work is broken into feature bundles — each independently testable and deliverable. One bundle at a time, fully completed before the next.</p>
+      <div class="icon">👁️</div>
+      <h3>Accountability gets lost</h3>
+      <p>Who decided what? Why was that code generated? Is that test valid? Without persistent artifacts and clear ownership, these questions become impossible to answer.</p>
     </div>
   </div>
 </div>
 
-<!-- Slide 4: Divider — Agents -->
-<div class="slide slide-divider" id="s4">
-  <h2>🤖 The Agents</h2>
-  <p>Seven specialized AI agents, one orchestrator to lead them</p>
+<!-- Slide 4: Operating Model -->
+<div class="slide slide-content" id="s4">
+  <h2>Operating Model</h2>
+  <p class="subtitle">DevLoop separates governance, execution, and evidence into distinct roles</p>
+  <div class="cards cards-2">
+    <div class="card">
+      <div class="icon">👤</div>
+      <h3>Human as Governor</h3>
+      <p>Sets project intent, reviews high-impact tradeoffs, approves release decisions. Moves from hands-on coding to supervisory control at meaningful checkpoints.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h3>Orchestrator as Control Layer</h3>
+      <p>The only component allowed to advance the workflow. Manages state, routes work, enforces gates, escalates ambiguity. Single point of control keeps the system predictable and auditable.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔧</div>
+      <h3>Specialists Execute Bounded Tasks</h3>
+      <p>Each agent owns one phase and produces one artifact. Agents do not negotiate with each other; they work through orchestrated context and return control immediately.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📦</div>
+      <h3>Durable Artifacts Carry Intent</h3>
+      <p>Requirements, plans, tests, and release evidence persist and remain versioned. Artifacts are the contract between phases, not ephemeral prompts.</p>
+    </div>
+  </div>
 </div>
 
-<!-- Slide 5: Agent Roster -->
+<!-- Slide 5: System Roles -->
 <div class="slide slide-content" id="s5">
-  <h2>Agent Roster</h2>
-  <p class="subtitle">Each agent has a single responsibility and produces a specific deliverable</p>
+  <h2>System Roles</h2>
+  <p class="subtitle">Each role has a single responsibility and produces a specific output</p>
   <div class="agent-grid">
     <div class="agent-row">
       <span class="emoji">🤖</span>
       <span class="name">Orchestrator</span>
-      <span class="role">Coordinates the workflow — reads state, selects phases, invokes agents, enforces gates</span>
-      <span class="output">docs/STATE.md</span>
+      <span class="role">Owns control flow, state, routing, policy, retries, and gate enforcement. The only active manager of phase transitions.</span>
+      <span class="output">STATE.md</span>
     </div>
     <div class="agent-row">
       <span class="emoji">📋</span>
-      <span class="name">Product Manager</span>
-      <span class="role">Turns your request into structured requirements with testable acceptance criteria</span>
-      <span class="output">docs/PRD.md</span>
+      <span class="name">Requirements Engineer</span>
+      <span class="role">Transforms user intent into testable requirements and acceptance criteria with explicit scope and success measures.</span>
+      <span class="output">PRD.md</span>
     </div>
     <div class="agent-row">
       <span class="emoji">🏗️</span>
-      <span class="name">Software Architect</span>
-      <span class="role">Designs modules, interfaces, and technical decisions from the requirements</span>
-      <span class="output">docs/ARC.md</span>
+      <span class="name">Architect</span>
+      <span class="role">Designs modules, interfaces, and key technical decisions. Bridges requirements to implementable structure.</span>
+      <span class="output">ARC.md</span>
     </div>
     <div class="agent-row">
       <span class="emoji">📐</span>
       <span class="name">Task Planner</span>
-      <span class="role">Breaks the architecture into 3–8 concrete, implementable tasks per bundle</span>
-      <span class="output">docs/PLN.md</span>
+      <span class="role">Breaks the architecture into 3–8 concrete, interdependent tasks with validation commands and acceptance criterion traceability.</span>
+      <span class="output">PLN.md</span>
     </div>
     <div class="agent-row">
       <span class="emoji">💻</span>
       <span class="name">Developer</span>
-      <span class="role">Implements exactly the planned tasks — code, unit tests, nothing more</span>
+      <span class="role">Implements planned tasks: writes code, adds unit tests, runs checks. Stops at boundaries; does not redesign or skip validation.</span>
       <span class="output">src/ + tests/</span>
     </div>
     <div class="agent-row">
       <span class="emoji">🧪</span>
       <span class="name">Tester</span>
-      <span class="role">Verifies the software against requirements — tests come from the PRD, not from code</span>
-      <span class="output">docs/TST.md</span>
+      <span class="role">Independently verifies behavior against requirements. Tests come from PRD intent, not from reading code.</span>
+      <span class="output">TST.md</span>
     </div>
     <div class="agent-row">
       <span class="emoji">🔍</span>
       <span class="name">Review Presenter</span>
-      <span class="role">Assembles a review package with demo steps so you can try the software before approving</span>
-      <span class="output">docs/REV.md</span>
+      <span class="role">Assembles a self-contained review package: change summary, test evidence, risks, demo steps, and explicit approval questions.</span>
+      <span class="output">REV.md</span>
     </div>
     <div class="agent-row">
       <span class="emoji">📦</span>
       <span class="name">Release Manager</span>
-      <span class="role">Creates user-facing release notes, packages the deliverable as a versioned zip</span>
-      <span class="output">releases/</span>
+      <span class="role">Creates user-oriented release notes, traceability table, and versioned deliverable package.</span>
+      <span class="output">REL.md + zip</span>
     </div>
   </div>
 </div>
 
-<!-- Slide 6: How Agents Work Together -->
+<!-- Slide 6: Governance & Control Flow -->
 <div class="slide slide-content" id="s6">
-  <h2>How Agents Work Together</h2>
-  <p class="subtitle">The orchestrator is the single point of control — agents never talk to each other directly</p>
-  <div class="cards cards-2" style="margin-top: 20px;">
-    <div class="card">
-      <div class="icon">🤖</div>
-      <h3>Orchestrator Controls Everything</h3>
-      <p>Reads the current state, decides which phase comes next, invokes the right agent, validates the output, and updates the state. No agent acts without being called.</p>
-    </div>
-    <div class="card">
-      <div class="icon">👤</div>
-      <h3>You Talk to the Orchestrator</h3>
-      <p>All user-facing prompts (accept/improve, approval, version numbers) come from the orchestrator — never from sub-agents. One conversation, one point of contact.</p>
-    </div>
-    <div class="card">
-      <div class="icon">📝</div>
-      <h3>Documents Are the Interface</h3>
-      <p>Each agent reads input documents and writes output documents. The PRD flows into the architecture, the plan flows into the code, the tests flow into the review.</p>
-    </div>
-    <div class="card">
-      <div class="icon">🔒</div>
-      <h3>Document Ownership</h3>
-      <p>Each document has exactly one owning agent. Only the owner can modify it. This prevents conflicts and ensures accountability for every artifact.</p>
-    </div>
+  <h2>Governance & Control Flow</h2>
+  <p class="subtitle">Three layers: human decision, orchestration, and specialist execution</p>
+  <div class="svg-diagram-wrap">
+    <svg class="diagram-svg" viewBox="0 0 1500 588" role="img" aria-labelledby="govTitle" xmlns="http://www.w3.org/2000/svg">
+      <title id="govTitle">DevLoop governance and control flow</title>
+      <defs>
+        <marker id="arrowGov" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#00ac46"/>
+        </marker>
+        <marker id="arrowBlu" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#0284c7"/>
+        </marker>
+        <filter id="govShadow">
+          <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.06"/>
+        </filter>
+      </defs>
+
+      <g transform="scale(1.25)">
+      <!-- ── LANE BANDS ── -->
+      <rect x="80" y="10"  width="1112" height="84"  rx="8" fill="#eef7fd"/>
+      <rect x="80" y="108" width="1112" height="134" rx="8" fill="#d9f3e3"/>
+      <rect x="80" y="256" width="1112" height="98"  rx="8" fill="#f5f5f5"/>
+      <rect x="80" y="368" width="1112" height="46"  rx="8" fill="white" stroke="#82dba3" stroke-width="1.5"/>
+
+      <!-- Lane labels (left margin) -->
+      <text x="6" y="55"  font-size="9" font-weight="700" fill="#919394" letter-spacing="0.5">HUMAN</text>
+      <text x="6" y="178" font-size="9" font-weight="700" fill="#57cd84" letter-spacing="0.5">ORCH.</text>
+      <text x="6" y="308" font-size="9" font-weight="700" fill="#919394" letter-spacing="0.5">AGENTS</text>
+      <text x="6" y="393" font-size="9" font-weight="700" fill="#82dba3" letter-spacing="0.5">OUTPUT</text>
+
+      <!-- ── HUMAN LAYER ── -->
+      <!-- User box (center x=206) -->
+      <rect x="96"  y="20" width="220" height="64" rx="8" fill="white" stroke="#bee3f8" stroke-width="1.5" filter="url(#govShadow)"/>
+      <circle cx="124" cy="52" r="20" fill="#0284c7" opacity="0.12"/>
+      <text x="124" y="60" text-anchor="middle" font-size="20">👤</text>
+      <text x="157" y="46" font-size="13" font-weight="700" fill="#1a374d">User</text>
+      <text x="157" y="62" font-size="10" fill="#707375">Intent · Approvals · Scope</text>
+
+      <!-- Review Approval box (center x=600) -->
+      <rect x="490" y="20" width="220" height="64" rx="8" fill="white" stroke="#bee3f8" stroke-width="1.5" filter="url(#govShadow)"/>
+      <circle cx="518" cy="52" r="20" fill="#0284c7" opacity="0.12"/>
+      <text x="518" y="60" text-anchor="middle" font-size="20">👁️</text>
+      <text x="551" y="46" font-size="13" font-weight="700" fill="#1a374d">Review Approval</text>
+      <text x="551" y="62" font-size="10" fill="#707375">Accept or request rework</text>
+
+      <!-- Release Approval box (center x=994) -->
+      <rect x="884" y="20" width="220" height="64" rx="8" fill="white" stroke="#bee3f8" stroke-width="1.5" filter="url(#govShadow)"/>
+      <circle cx="912" cy="52" r="20" fill="#0284c7" opacity="0.12"/>
+      <text x="912" y="60" text-anchor="middle" font-size="20">📦</text>
+      <text x="945" y="46" font-size="13" font-weight="700" fill="#1a374d">Release Approval</text>
+      <text x="945" y="62" font-size="10" fill="#707375">Version · notes · audience</text>
+
+      <!-- Arrows: human → orchestrator -->
+      <line x1="206" y1="84" x2="206" y2="108" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrowBlu)"/>
+      <line x1="600" y1="84" x2="600" y2="108" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrowBlu)"/>
+      <line x1="994" y1="84" x2="994" y2="108" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrowBlu)"/>
+
+      <!-- ── ORCHESTRATION LAYER ── -->
+      <!-- Inner white card -->
+      <rect x="96" y="120" width="1080" height="110" rx="8" fill="white" stroke="#57cd84" stroke-width="1.5" filter="url(#govShadow)"/>
+
+      <!-- Orchestrator icon (non-overlapping with pills and title) -->
+      <circle cx="142" cy="175" r="24" fill="#00ac46" opacity="0.15"/>
+      <text x="142" y="183" text-anchor="middle" font-size="24">🤖</text>
+
+      <!-- Orchestrator title and subtitle (x=178, clear of icon right edge 166) -->
+      <text x="178" y="164" font-size="14" font-weight="700" fill="#006c2c">Orchestrator</text>
+      <text x="178" y="179" font-size="10" fill="#707375">Single point of control</text>
+
+      <!-- Divider between identity and responsibilities -->
+      <line x1="292" y1="130" x2="292" y2="220" stroke="#82dba3" stroke-width="1" stroke-dasharray="3 3"/>
+
+      <!-- Responsibility pills — Row 1 (primary): y=132, h=22 -->
+      <!-- 6 pills, width=128, step=148, start x=308. Last right edge: 1036+128=1164 ≤ 1176 -->
+      <rect x="308"  y="132" width="128" height="22" rx="11" fill="#d9f3e3" stroke="#57cd84" stroke-width="1"/>
+      <text x="372"  y="148" text-anchor="middle" font-size="10" font-weight="600" fill="#005623">Read STATE.md</text>
+
+      <rect x="456"  y="132" width="128" height="22" rx="11" fill="#d9f3e3" stroke="#57cd84" stroke-width="1"/>
+      <text x="520"  y="148" text-anchor="middle" font-size="10" font-weight="600" fill="#005623">Select Phase</text>
+
+      <rect x="604"  y="132" width="128" height="22" rx="11" fill="#d9f3e3" stroke="#57cd84" stroke-width="1"/>
+      <text x="668"  y="148" text-anchor="middle" font-size="10" font-weight="600" fill="#005623">Invoke Agent</text>
+
+      <rect x="752"  y="132" width="128" height="22" rx="11" fill="#d9f3e3" stroke="#57cd84" stroke-width="1"/>
+      <text x="816"  y="148" text-anchor="middle" font-size="10" font-weight="600" fill="#005623">Validate Output</text>
+
+      <rect x="900"  y="132" width="128" height="22" rx="11" fill="#d9f3e3" stroke="#57cd84" stroke-width="1"/>
+      <text x="964"  y="148" text-anchor="middle" font-size="10" font-weight="600" fill="#005623">Enforce Gates</text>
+
+      <rect x="1048" y="132" width="128" height="22" rx="11" fill="#d9f3e3" stroke="#57cd84" stroke-width="1"/>
+      <text x="1112" y="148" text-anchor="middle" font-size="10" font-weight="600" fill="#005623">Write STATE.md</text>
+
+      <!-- Responsibility pills — Row 2 (secondary): y=162, h=22 -->
+      <rect x="308"  y="162" width="128" height="22" rx="11" fill="white" stroke="#82dba3" stroke-width="1"/>
+      <text x="372"  y="178" text-anchor="middle" font-size="10" fill="#006c2c">Route decision</text>
+
+      <rect x="456"  y="162" width="128" height="22" rx="11" fill="white" stroke="#82dba3" stroke-width="1"/>
+      <text x="520"  y="178" text-anchor="middle" font-size="10" fill="#006c2c">Retry on failure</text>
+
+      <rect x="604"  y="162" width="128" height="22" rx="11" fill="white" stroke="#82dba3" stroke-width="1"/>
+      <text x="668"  y="178" text-anchor="middle" font-size="10" fill="#006c2c">Escalate blocks</text>
+
+      <rect x="752"  y="162" width="128" height="22" rx="11" fill="white" stroke="#82dba3" stroke-width="1"/>
+      <text x="816"  y="178" text-anchor="middle" font-size="10" fill="#006c2c">Request approval</text>
+
+      <rect x="900"  y="162" width="128" height="22" rx="11" fill="white" stroke="#82dba3" stroke-width="1"/>
+      <text x="964"  y="178" text-anchor="middle" font-size="10" fill="#006c2c">Manage cycles</text>
+
+      <rect x="1048" y="162" width="128" height="22" rx="11" fill="white" stroke="#82dba3" stroke-width="1"/>
+      <text x="1112" y="178" text-anchor="middle" font-size="10" fill="#006c2c">YOLO auto-mode</text>
+
+      <!-- Arrow: orchestrator → agent layer -->
+      <line x1="636" y1="230" x2="636" y2="256" stroke="#00ac46" stroke-width="2" marker-end="url(#arrowGov)"/>
+
+      <!-- ── AGENT LAYER ── -->
+      <!-- 7 boxes: width=128, step=154, start x=97. Right edge of last: 1021+128=1149 ≤ 1192 -->
+
+      <!-- Box 0: Req. Eng. (x=97, center=161) -->
+      <rect x="97"  y="266" width="128" height="80" rx="8" fill="white" stroke="#82dba3" stroke-width="1.5" filter="url(#govShadow)"/>
+      <text x="161" y="290" text-anchor="middle" font-size="18">📋</text>
+      <text x="161" y="308" text-anchor="middle" font-size="11" font-weight="700" fill="#006c2c">Req. Eng.</text>
+      <text x="161" y="322" text-anchor="middle" font-size="9"  fill="#919394">PRD.md</text>
+      <line x1="225" y1="306" x2="251" y2="306" stroke="#00ac46" stroke-width="1.5" marker-end="url(#arrowGov)"/>
+
+      <!-- Box 1: Architect (x=251, center=315) -->
+      <rect x="251" y="266" width="128" height="80" rx="8" fill="white" stroke="#82dba3" stroke-width="1.5" filter="url(#govShadow)"/>
+      <text x="315" y="290" text-anchor="middle" font-size="18">🏗️</text>
+      <text x="315" y="308" text-anchor="middle" font-size="11" font-weight="700" fill="#006c2c">Architect</text>
+      <text x="315" y="322" text-anchor="middle" font-size="9"  fill="#919394">ARC.md</text>
+      <line x1="379" y1="306" x2="405" y2="306" stroke="#00ac46" stroke-width="1.5" marker-end="url(#arrowGov)"/>
+
+      <!-- Box 2: Planner (x=405, center=469) -->
+      <rect x="405" y="266" width="128" height="80" rx="8" fill="white" stroke="#82dba3" stroke-width="1.5" filter="url(#govShadow)"/>
+      <text x="469" y="290" text-anchor="middle" font-size="18">📐</text>
+      <text x="469" y="308" text-anchor="middle" font-size="11" font-weight="700" fill="#006c2c">Planner</text>
+      <text x="469" y="322" text-anchor="middle" font-size="9"  fill="#919394">PLN.md</text>
+      <line x1="533" y1="306" x2="559" y2="306" stroke="#00ac46" stroke-width="1.5" marker-end="url(#arrowGov)"/>
+
+      <!-- Box 3: Developer (x=559, center=623) -->
+      <rect x="559" y="266" width="128" height="80" rx="8" fill="white" stroke="#82dba3" stroke-width="1.5" filter="url(#govShadow)"/>
+      <text x="623" y="290" text-anchor="middle" font-size="18">💻</text>
+      <text x="623" y="308" text-anchor="middle" font-size="11" font-weight="700" fill="#006c2c">Developer</text>
+      <text x="623" y="322" text-anchor="middle" font-size="9"  fill="#919394">code + tests</text>
+      <line x1="687" y1="306" x2="713" y2="306" stroke="#00ac46" stroke-width="1.5" marker-end="url(#arrowGov)"/>
+
+      <!-- Box 4: Tester (x=713, center=777) -->
+      <rect x="713" y="266" width="128" height="80" rx="8" fill="white" stroke="#82dba3" stroke-width="1.5" filter="url(#govShadow)"/>
+      <text x="777" y="290" text-anchor="middle" font-size="18">🧪</text>
+      <text x="777" y="308" text-anchor="middle" font-size="11" font-weight="700" fill="#006c2c">Tester</text>
+      <text x="777" y="322" text-anchor="middle" font-size="9"  fill="#919394">TST.md</text>
+      <line x1="841" y1="306" x2="867" y2="306" stroke="#00ac46" stroke-width="1.5" marker-end="url(#arrowGov)"/>
+
+      <!-- Box 5: Reviewer (x=867, center=931) -->
+      <rect x="867" y="266" width="128" height="80" rx="8" fill="white" stroke="#82dba3" stroke-width="1.5" filter="url(#govShadow)"/>
+      <text x="931" y="290" text-anchor="middle" font-size="18">🔍</text>
+      <text x="931" y="308" text-anchor="middle" font-size="11" font-weight="700" fill="#006c2c">Reviewer</text>
+      <text x="931" y="322" text-anchor="middle" font-size="9"  fill="#919394">REV.md</text>
+      <line x1="995" y1="306" x2="1021" y2="306" stroke="#00ac46" stroke-width="1.5" marker-end="url(#arrowGov)"/>
+
+      <!-- Box 6: Releaser (x=1021, center=1085) -->
+      <rect x="1021" y="266" width="128" height="80" rx="8" fill="white" stroke="#82dba3" stroke-width="1.5" filter="url(#govShadow)"/>
+      <text x="1085" y="290" text-anchor="middle" font-size="18">📦</text>
+      <text x="1085" y="308" text-anchor="middle" font-size="11" font-weight="700" fill="#006c2c">Releaser</text>
+      <text x="1085" y="322" text-anchor="middle" font-size="9"  fill="#919394">REL.md</text>
+
+      <!-- ── ARTIFACT CHAIN ── -->
+      <text x="636" y="389" text-anchor="middle" font-size="11" font-weight="600" fill="#006c2c">Request → PRD.md → ARC.md → PLN.md → Code + Tests → TST.md → REV.md → REL.md</text>
+      <text x="636" y="404" text-anchor="middle" font-size="9" fill="#919394">Persistent artifact chain — intent flows forward, validation flows backward</text>
+      </g>
+    </svg>
   </div>
 </div>
 
-<!-- Slide 7: Divider — Skills -->
-<div class="slide slide-divider" id="s7">
-  <h2>🛠️ Skills</h2>
-  <p>Seven reusable procedures that agents follow to produce consistent results</p>
-</div>
-
-<!-- Slide 8: Skills -->
-<div class="slide slide-content" id="s8">
-  <h2>Skills</h2>
-  <p class="subtitle">Standardized procedures ensure every agent produces high-quality, consistent output</p>
-  <div class="cards cards-3">
-    <div class="card">
-      <div class="icon">💾</div>
-      <h3>State Management</h3>
-      <p>Reads and writes workflow state. Tracks current phase, active bundle, repeat count, and blockers. Can infer state from existing documents if interrupted.</p>
-    </div>
-    <div class="card">
-      <div class="icon">📋</div>
-      <h3>PRD Authoring</h3>
-      <p>Structures raw user input into feature bundles with REQ-N IDs and testable acceptance criteria with AC-N.M IDs using Given/When/Then format.</p>
-    </div>
-    <div class="card">
-      <div class="icon">🏗️</div>
-      <h3>Architecture Design</h3>
-      <p>Decomposes requirements into modules, interfaces, and technical decisions. Identifies risks and ensures every feature bundle maps to at least one module.</p>
-    </div>
-    <div class="card">
-      <div class="icon">📐</div>
-      <h3>Bundle Planning</h3>
-      <p>Breaks a feature bundle into 3–8 tasks with dependencies, definitions of ready/done, validation commands, and AC traceability.</p>
-    </div>
-    <div class="card">
-      <div class="icon">🧪</div>
-      <h3>Requirements Testing</h3>
-      <p>Designs tests from requirements, not source code. Every acceptance criterion gets at least one test. Expected behavior always comes from the PRD.</p>
-    </div>
-    <div class="card">
-      <div class="icon">🔍</div>
-      <h3>Review Packaging</h3>
-      <p>Assembles a self-contained review package: change summary, test results, risks, runnable demo steps, and clear approval questions.</p>
-    </div>
-    <div class="card">
-      <div class="icon">📦</div>
-      <h3>Release Notes</h3>
-      <p>Generates user-oriented release notes with what's new, migration steps, known issues, and a traceability table linking requirements to commits.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 9: Divider — Workflow -->
-<div class="slide slide-divider" id="s9">
-  <h2>🔄 The Workflow</h2>
-  <p>From idea to tested, released software in defined phases</p>
-</div>
-
-<!-- Slide 10: Workflow Overview -->
-<div class="slide slide-content" id="s10">
-  <h2>Workflow Phases</h2>
-  <p class="subtitle">Every project follows the same path — requirements first, then design, then build-test-review cycles</p>
-  <div class="phase-flow" style="margin-top: 30px;">
-    <div class="phase-item">
-      <span class="icon">🚀</span>
-      <span class="label">Init</span>
-      <span class="desc">Capture request</span>
-    </div>
-    <span class="phase-arrow">→</span>
-    <div class="phase-item">
-      <span class="icon">📋</span>
-      <span class="label">Requirements</span>
-      <span class="desc">Write the PRD</span>
-    </div>
-    <span class="phase-arrow">→</span>
-    <div class="phase-item">
-      <span class="icon">🏗️</span>
-      <span class="label">Architecture</span>
-      <span class="desc">Design modules</span>
-    </div>
-    <span class="phase-arrow">→</span>
-    <div class="phase-item highlight">
-      <span class="icon">🔁</span>
-      <span class="label">Increment Cycle</span>
-      <span class="desc">Plan → Build → Test</span>
-    </div>
-    <span class="phase-arrow">→</span>
-    <div class="phase-item">
-      <span class="icon">🔍</span>
-      <span class="label">Review</span>
-      <span class="desc">User approves</span>
-    </div>
-    <span class="phase-arrow">→</span>
-    <div class="phase-item">
-      <span class="icon">📦</span>
-      <span class="label">Release</span>
-      <span class="desc">Package &amp; ship</span>
-    </div>
-  </div>
-  <div class="highlight-box">
-    <h4>The Increment Cycle repeats for each feature bundle</h4>
-    <p>Work is split into feature bundles (3–8 tasks each). The cycle runs once per bundle: plan the tasks, implement them, test against requirements. If tests fail, the developer fixes and retests — up to 3 attempts before escalating.</p>
-  </div>
-</div>
-
-<!-- Slide 11: What happens in each phase -->
-<div class="slide slide-content" id="s11">
-  <h2>What Happens in Each Phase</h2>
-  <p class="subtitle">Every phase has a clear input, a responsible agent, and a defined output</p>
-  <ul class="styled-list">
-    <li><strong>🚀 Init</strong> — The orchestrator captures your project name, summary, requirements, and tech stack. Writes the user request and auto-transitions to Requirements.</li>
-    <li><strong>📋 Requirements</strong> — The product manager creates a PRD with feature bundles (REQ-1, REQ-2…) and testable acceptance criteria (AC-1.1, AC-1.2…). You review and accept.</li>
-    <li><strong>🏗️ Architecture</strong> — The architect designs modules, interfaces, and technical decisions based on the PRD. You review and accept.</li>
-    <li><strong>📐 Planning</strong> — The task planner picks the next feature bundle and breaks it into 3–8 concrete tasks with dependencies and validation commands.</li>
-    <li><strong>💻 Implementation</strong> — The developer implements each task in order: writes code in <code>src/</code>, writes tests in <code>tests/</code>, runs pytest + ruff after each task.</li>
-    <li><strong>🧪 Testing</strong> — The tester independently verifies the software against requirements. Tests come from the PRD, not from reading the code. Pass gate is automated.</li>
-    <li><strong>🔍 Review</strong> — The review presenter assembles a review package with demo steps. You choose: Approve &amp; Release, Approve &amp; Next Bundle, or Needs Rework.</li>
-    <li><strong>📦 Release</strong> — The release manager creates user-facing release notes and packages a versioned zip archive in <code>releases/</code>.</li>
+<!-- Slide 7: Lifecycle Phases -->
+<div class="slide slide-content" id="s7">
+  <h2>Lifecycle Phases</h2>
+  <p class="subtitle">Eight phases from goal capture to release, each with explicit ownership and exit criteria</p>
+  <ul class="styled-list" style="margin-top: 10px;">
+    <li><strong>1. Capture Intent</strong> — Define the goal, constraints, initial scope, and success measures.</li>
+    <li><strong>2. Specify Requirements</strong> — Turn intent into testable requirements and acceptance criteria with explicit scope.</li>
+    <li><strong>3. Design Solution</strong> — Choose structure, interfaces, and key technical decisions. Bridge requirements to implementation.</li>
+    <li><strong>4. Plan Increment</strong> — Break the next bundle into 3–8 concrete tasks with dependencies and validation commands.</li>
+    <li><strong>5. Implement</strong> — Produce code, unit tests, and local validation evidence. Stop at boundaries.</li>
+    <li><strong>6. Verify Requirements</strong> — Test from intended behavior, not from implementation assumptions. Trace back to PRD.</li>
+    <li><strong>7. Review with Evidence</strong> — Present change summary, test results, risks, and demo steps for approval.</li>
+    <li><strong>8. Release Increment</strong> — Package the approved result with release notes and traceability table.</li>
   </ul>
 </div>
 
-<!-- Slide 12: Divider — Quality Gates -->
-<div class="slide slide-divider" id="s12">
-  <h2>🚦 Quality Gates</h2>
-  <p>Every phase transition must pass its gate — no exceptions</p>
+<!-- Slide 8: Phase State Machine -->
+<div class="slide slide-content" id="s8">
+  <h2>Phase Workflow State Machine</h2>
+  <p class="subtitle">Phases are discrete states — only the orchestrator advances the machine through guarded transitions</p>
+  <div class="svg-diagram-wrap">
+    <svg class="diagram-svg" viewBox="0 0 1180 395" role="img" aria-labelledby="smTitle" xmlns="http://www.w3.org/2000/svg">
+      <title id="smTitle">DevLoop phase workflow state machine</title>
+      <defs>
+        <marker id="smFwd" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#00ac46"/>
+        </marker>
+        <marker id="smRet" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#d97706"/>
+        </marker>
+        <marker id="smRew" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#dc2626"/>
+        </marker>
+        <marker id="smBun" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#0284c7"/>
+        </marker>
+        <filter id="smShadow">
+          <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.06"/>
+        </filter>
+      </defs>
+
+      <!-- ── START MARK ── -->
+      <circle cx="20" cy="145" r="10" fill="#006c2c"/>
+      <line x1="30" y1="145" x2="53" y2="145" stroke="#006c2c" stroke-width="1.5" marker-end="url(#smFwd)"/>
+
+      <!-- ── STATE BOXES ── -->
+      <!-- REQ: x=55..165, center=110 -->
+      <rect x="55" y="122" width="110" height="46" rx="8" fill="#eef7fd" stroke="#0284c7" stroke-width="2" filter="url(#smShadow)"/>
+      <text x="110" y="143" text-anchor="middle" font-size="17">📋</text>
+      <text x="110" y="159" text-anchor="middle" font-size="11" font-weight="700" fill="#1a374d">Requirements</text>
+
+      <!-- ARC: x=217..327, center=272 -->
+      <rect x="217" y="122" width="110" height="46" rx="8" fill="#d9f3e3" stroke="#00ac46" stroke-width="2" filter="url(#smShadow)"/>
+      <text x="272" y="143" text-anchor="middle" font-size="17">🏗️</text>
+      <text x="272" y="159" text-anchor="middle" font-size="11" font-weight="700" fill="#005623">Architecture</text>
+
+      <!-- PLAN: x=379..489, center=434 -->
+      <rect x="379" y="122" width="110" height="46" rx="8" fill="#d9f3e3" stroke="#00ac46" stroke-width="2" filter="url(#smShadow)"/>
+      <text x="434" y="143" text-anchor="middle" font-size="17">📐</text>
+      <text x="434" y="159" text-anchor="middle" font-size="11" font-weight="700" fill="#005623">Planning</text>
+
+      <!-- IMPL: x=541..651, center=596 -->
+      <rect x="541" y="122" width="110" height="46" rx="8" fill="#d9f3e3" stroke="#00ac46" stroke-width="2" filter="url(#smShadow)"/>
+      <text x="596" y="143" text-anchor="middle" font-size="17">💻</text>
+      <text x="596" y="159" text-anchor="middle" font-size="11" font-weight="700" fill="#005623">Implement</text>
+
+      <!-- TEST: x=703..813, center=758 -->
+      <rect x="703" y="122" width="110" height="46" rx="8" fill="#d9f3e3" stroke="#00ac46" stroke-width="2" filter="url(#smShadow)"/>
+      <text x="758" y="143" text-anchor="middle" font-size="17">🧪</text>
+      <text x="758" y="159" text-anchor="middle" font-size="11" font-weight="700" fill="#005623">Testing</text>
+
+      <!-- REVIEW: x=865..975, center=920 -->
+      <rect x="865" y="122" width="110" height="46" rx="8" fill="#eef7fd" stroke="#0284c7" stroke-width="2" filter="url(#smShadow)"/>
+      <text x="920" y="143" text-anchor="middle" font-size="17">🔍</text>
+      <text x="920" y="159" text-anchor="middle" font-size="11" font-weight="700" fill="#1a374d">Review</text>
+
+      <!-- RELEASE: x=1027..1137, center=1082 -->
+      <rect x="1027" y="122" width="110" height="46" rx="8" fill="#eef7fd" stroke="#0284c7" stroke-width="2" filter="url(#smShadow)"/>
+      <text x="1082" y="143" text-anchor="middle" font-size="17">📦</text>
+      <text x="1082" y="159" text-anchor="middle" font-size="11" font-weight="700" fill="#1a374d">Release</text>
+
+      <!-- ── END MARK (double circle) ── -->
+      <circle cx="1165" cy="145" r="12" fill="none" stroke="#006c2c" stroke-width="2"/>
+      <circle cx="1165" cy="145" r="7" fill="#006c2c"/>
+
+      <!-- ── FORWARD ARROWS ── -->
+      <line x1="165" y1="145" x2="215" y2="145" stroke="#00ac46" stroke-width="1.5" marker-end="url(#smFwd)"/>
+      <line x1="327" y1="145" x2="377" y2="145" stroke="#00ac46" stroke-width="1.5" marker-end="url(#smFwd)"/>
+      <line x1="489" y1="145" x2="539" y2="145" stroke="#00ac46" stroke-width="1.5" marker-end="url(#smFwd)"/>
+      <line x1="651" y1="145" x2="701" y2="145" stroke="#00ac46" stroke-width="1.5" marker-end="url(#smFwd)"/>
+      <line x1="813" y1="145" x2="863" y2="145" stroke="#00ac46" stroke-width="1.5" marker-end="url(#smFwd)"/>
+      <line x1="975" y1="145" x2="1025" y2="145" stroke="#00ac46" stroke-width="1.5" marker-end="url(#smFwd)"/>
+      <line x1="1137" y1="145" x2="1151" y2="145" stroke="#00ac46" stroke-width="1.5" marker-end="url(#smFwd)"/>
+
+      <!-- ── GATE LABELS (above forward arrows) ── -->
+      <text x="191" y="112" text-anchor="middle" font-size="9" fill="#707375">PRD ✓</text>
+      <text x="353" y="112" text-anchor="middle" font-size="9" fill="#707375">ARC ✓</text>
+      <text x="515" y="112" text-anchor="middle" font-size="9" fill="#707375">bundle</text>
+      <text x="677" y="112" text-anchor="middle" font-size="9" fill="#707375">ready</text>
+      <text x="839" y="112" text-anchor="middle" font-size="9" fill="#707375">all pass</text>
+      <text x="1001" y="112" text-anchor="middle" font-size="9" fill="#707375">approved</text>
+      <text x="1144" y="112" text-anchor="middle" font-size="9" fill="#707375">shipped</text>
+
+      <!-- ── RETRY LOOP: TEST → IMPL (fail ≤ 3×) ── -->
+      <path d="M 758,168 C 758,255 615,255 615,168" fill="none" stroke="#d97706" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#smRet)"/>
+      <rect x="647" y="255" width="80" height="17" rx="4" fill="white"/>
+      <text x="687" y="268" text-anchor="middle" font-size="9" font-weight="600" fill="#d97706">fail (≤ 3×)</text>
+
+      <!-- ── REWORK LOOP: REVIEW → IMPL ── -->
+      <path d="M 920,168 C 920,310 577,310 577,168" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#smRew)"/>
+      <rect x="716" y="310" width="58" height="17" rx="4" fill="white"/>
+      <text x="745" y="323" text-anchor="middle" font-size="9" font-weight="600" fill="#dc2626">rework</text>
+
+      <!-- ── NEW BUNDLE LOOP: RELEASE → PLAN ── -->
+      <path d="M 1082,168 C 1082,365 434,365 434,168" fill="none" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#smBun)"/>
+      <rect x="704" y="363" width="92" height="17" rx="4" fill="white"/>
+      <text x="750" y="376" text-anchor="middle" font-size="9" font-weight="600" fill="#0284c7">next bundle</text>
+
+      <!-- ── LEGEND ── -->
+      <rect x="310" y="30" width="560" height="28" rx="6" fill="white" stroke="#e2e4e2" stroke-width="1"/>
+      <rect x="322" y="37" width="14" height="14" rx="3" fill="#eef7fd" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="342" y="48" font-size="9" fill="#1a374d">human-gated</text>
+      <rect x="428" y="37" width="14" height="14" rx="3" fill="#d9f3e3" stroke="#00ac46" stroke-width="1.5"/>
+      <text x="448" y="48" font-size="9" fill="#005623">agent-executed</text>
+      <line x1="548" y1="44" x2="568" y2="44" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <text x="574" y="48" font-size="9" fill="#d97706">retry / rework</text>
+      <line x1="666" y1="44" x2="686" y2="44" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <text x="692" y="48" font-size="9" fill="#0284c7">new bundle</text>
+    </svg>
+  </div>
 </div>
 
-<!-- Slide 13: Quality Gates -->
-<div class="slide slide-content" id="s13">
-  <h2>Quality Gates</h2>
-  <p class="subtitle">Four gates ensure nothing ships until it's ready</p>
+<!-- Slide 9: Phase Ownership & Gates -->
+<div class="slide slide-content" id="s9">
+  <h2>Phase Ownership & Exit Gates</h2>
+  <p class="subtitle">Each phase has one owner, one output, and one required gate</p>
+  <div class="phase-timeline">
+    <div class="phase-timeline-item">
+      <div class="phase-title">📋 Requirements</div>
+      <div class="phase-owner">Requirement Engineer</div>
+      <div class="phase-output">PRD.md</div>
+      <div class="phase-gate">Requirements collected</div>
+    </div>
+    <div class="phase-timeline-item">
+      <div class="phase-title">🏗️ Architecture</div>
+      <div class="phase-owner">Architect</div>
+      <div class="phase-output">ARC.md</div>
+      <div class="phase-gate">Architecture worked out</div>
+    </div>
+    <div class="phase-timeline-item">
+      <div class="phase-title">📐 Planning</div>
+      <div class="phase-owner">Planner</div>
+      <div class="phase-output">PLN.md</div>
+      <div class="phase-gate">Tasks planned</div>
+    </div>
+    <div class="phase-timeline-item">
+      <div class="phase-title">💻 Implement</div>
+      <div class="phase-owner">Developer</div>
+      <div class="phase-output">code+tests</div>
+      <div class="phase-gate">Ready for testing</div>
+    </div>
+    <div class="phase-timeline-item">
+      <div class="phase-title">🧪 Testing</div>
+      <div class="phase-owner">Tester</div>
+      <div class="phase-output">TST.md</div>
+      <div class="phase-gate">AC fulfilled</div>
+    </div>
+    <div class="phase-timeline-item">
+      <div class="phase-title">🔍 Review</div>
+      <div class="phase-owner">Reviewer</div>
+      <div class="phase-output">REV.md</div>
+      <div class="phase-gate">Approved by user</div>
+    </div>
+    <div class="phase-timeline-item">
+      <div class="phase-title">📦 Release</div>
+      <div class="phase-owner">Releaser</div>
+      <div class="phase-output">REL.md+zip</div>
+      <div class="phase-gate">Release shipped</div>
+    </div>
+  </div>
+  <div class="highlight-box">
+    <h4>Rework and retry loops</h4>
+    <p>If verification fails, the orchestrator returns to implementation with the failure report. Up to 3 attempts before escalating to review. This keeps the system efficient while preventing infinite loops.</p>
+  </div>
+</div>
+
+<!-- Slide 10: Traceability Model -->
+<div class="slide slide-content" id="s10">
+  <h2>Traceability Model</h2>
+  <p class="subtitle">Bidirectional links connect requirements forward into design, code, and release evidence</p>
+  <div class="cards cards-2" style="margin-top: 16px;">
+    <div class="card">
+      <div class="icon">➡️</div>
+      <h3>Forward Traceability</h3>
+      <p>Each requirement flows into design decisions, planned tasks, implemented code, test cases, and release documentation. Coverage checks confirm that no requirement is orphaned.</p>
+    </div>
+    <div class="card">
+      <div class="icon">⬅️</div>
+      <h3>Backward Traceability</h3>
+      <p>Every delivered artifact traces back to a justified requirement. Code, tests, and documentation exist because a requirement demanded them, not by accident.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔍</div>
+      <h3>Trace Enforcement</h3>
+      <p>Automated checks block incomplete work from advancing. If a test has no parent requirement, it is flagged. If a requirement has no test, the release gate fails.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📊</div>
+      <h3>Traceability Report</h3>
+      <p>Release package includes a full traceability matrix: REQ-N → AC-N.M → Task → Code files → Test cases → Release notes. Everything is auditable.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 11: Evidence Gates -->
+<div class="slide slide-content" id="s11">
+  <h2>Evidence Gates</h2>
+  <p class="subtitle">Phases advance only when required artifacts exist and gate criteria pass</p>
   <div class="gate-bar">
     <div class="gate-step">
-      <h4>✅ Ready</h4>
-      <p>Bundle has scope, acceptance criteria, dependencies, and validation commands defined</p>
+      <h4>Ready Gate</h4>
+      <p>Scope, acceptance criteria, dependencies, and validation commands are defined and reviewed.</p>
     </div>
     <div class="gate-step">
-      <h4>✅ Pass</h4>
-      <p>All tests pass, lint is clean, validation commands exit with code 0</p>
+      <h4>Verified Gate</h4>
+      <p>Tests pass, lint is clean, validation commands succeed, and trace links are complete.</p>
     </div>
     <div class="gate-step">
-      <h4>✅ Accept</h4>
-      <p>User reviews the increment and explicitly approves it</p>
+      <h4>Approved Gate</h4>
+      <p>Human or policy explicitly approves the increment based on evidence and traceability.</p>
     </div>
     <div class="gate-step">
-      <h4>✅ Release</h4>
-      <p>Release notes, traceability table, and versioned zip archive are complete</p>
+      <h4>Shipped Gate</h4>
+      <p>Release notes, traceability table, and versioned package are complete and archived.</p>
     </div>
   </div>
-  <div class="two-col" style="margin-top: 30px;">
-    <div class="col">
-      <h3>Documents Produced</h3>
-      <ul class="styled-list">
-        <li><strong>PRD.md</strong> — Requirements with REQ/AC IDs</li>
-        <li><strong>ARC.md</strong> — Architecture and design</li>
-        <li><strong>PLN.md</strong> — Task plan with traceability</li>
-        <li><strong>TST.md</strong> — Test results and evidence</li>
-        <li><strong>REV.md</strong> — Review package with demo steps</li>
-        <li><strong>REL.md</strong> — Release notes for users</li>
-      </ul>
-    </div>
-    <div class="col">
-      <h3>Traceability Chain</h3>
-      <ul class="styled-list">
-        <li><strong>REQ-1</strong> → Feature bundle in the PRD</li>
-        <li><strong>AC-1.1</strong> → Testable acceptance criterion</li>
-        <li><strong>Tasks</strong> → Each traces back to AC IDs</li>
-        <li><strong>Tests</strong> → Each verifies specific AC IDs</li>
-        <li><strong>Commits</strong> → Reference REQ/AC in messages</li>
-        <li><strong>Release</strong> → Maps REQ → AC → commits</li>
-      </ul>
-    </div>
+  <div class="highlight-box">
+    <h4>Gates are not optional</h4>
+    <p>The workflow does not advance on confidence or agent self-reporting. It advances when the required artifact exists and the corresponding checks pass. This is what makes evidence-based delivery reliable.</p>
   </div>
 </div>
 
-<!-- Slide 14: YOLO Mode -->
-<div class="slide slide-content" id="s14">
-  <h2>YOLO Mode ⚡</h2>
-  <p class="subtitle">Fully automated — no user approval needed, releases after every cycle</p>
-  <div class="two-col" style="margin-top: 20px;">
+<!-- Slide 12: Modes of Operation -->
+<div class="slide slide-content" id="s12">
+  <h2>Modes of Operation</h2>
+  <p class="subtitle">Guided mode for evolving scope; supervisory mode for stable, policy-driven workflows</p>
+  <div class="two-col" style="margin-top: 16px;">
     <div class="col">
-      <h3>Normal Mode</h3>
+      <h3>Guided Mode</h3>
       <ul class="styled-list">
-        <li>You <strong>review and accept</strong> the PRD</li>
-        <li>You <strong>review and accept</strong> the architecture</li>
-        <li>You <strong>choose</strong> which bundle to work on</li>
-        <li>You <strong>approve or reject</strong> at review</li>
-        <li>You <strong>decide</strong> whether to release</li>
-        <li>You <strong>choose</strong> the version number</li>
+        <li>Human approves the PRD</li>
+        <li>Human approves the architecture</li>
+        <li>Human selects which bundle to implement</li>
+        <li>Human reviews evidence before release</li>
+        <li>Human approves the version number</li>
+        <li>Best for: evolving scope, complex tradeoffs, learning phases</li>
       </ul>
     </div>
     <div class="col">
-      <h3>YOLO Mode</h3>
+      <h3>Supervisory Mode (YOLO)</h3>
       <ul class="styled-list">
-        <li>PRD is <strong>auto-accepted</strong></li>
-        <li>Architecture is <strong>auto-accepted</strong></li>
-        <li>Next pending bundle is <strong>auto-selected</strong></li>
-        <li>Review <strong>auto-approves</strong></li>
-        <li>Release runs <strong>after every cycle</strong></li>
-        <li>Version <strong>auto-increments</strong> (minor)</li>
+        <li>PRD auto-accepted if scope is clear</li>
+        <li>Architecture auto-accepted per policy</li>
+        <li>Bundles auto-selected and executed</li>
+        <li>Evidence must still pass all gates</li>
+        <li>Version auto-increments; human monitors</li>
+        <li>Best for: stable policy, reliable constraints</li>
       </ul>
     </div>
   </div>
   <div class="highlight-box">
-    <h4>Quality gates are always enforced</h4>
-    <p>YOLO mode skips human approval — not automated checks. Tests must still pass, lint must be clean, and all acceptance criteria must be verified. The workflow just doesn't stop to ask you.</p>
+    <h4>Supervisory mode does not remove discipline</h4>
+    <p>Tests still run. Traces still validate. Gates still enforce. The difference is that human approval is replaced with policy-based automation, but the engineering rigor remains absolute.</p>
   </div>
 </div>
 
-<!-- Slide 15: Getting Started -->
-<div class="slide slide-content" id="s15">
+<!-- Slide 13: Getting Started -->
+<div class="slide slide-content" id="s13">
   <h2>Getting Started</h2>
-  <p class="subtitle">Three commands to know</p>
-  <div class="cards cards-3" style="margin-top: 10px;">
-    <div class="card" style="border-left: 4px solid var(--g500);">
-      <div class="icon">▶️</div>
+  <p class="subtitle">Six commands to operate DevLoop</p>
+  <div class="cards cards-3" style="margin-top: 12px;">
+    <div class="card">
+      <div class="icon">🚀</div>
       <h3>/devloop-start</h3>
-      <p>Start a new workflow from scratch. The orchestrator will ask for your project name, summary, requirements, and tech stack.</p>
+      <p>Launch a new workflow in guided mode. The orchestrator will ask for project name, goal, requirements, tech stack, and validate your input.</p>
     </div>
-    <div class="card" style="border-left: 4px solid var(--g500);">
-      <div class="icon">⚡</div>
-      <h3>/devloop-bulk-yolo-start</h3>
-      <p>Provide a structured request and let it run fully automated. No approvals needed — just watch it build, test, and release.</p>
-    </div>
-    <div class="card" style="border-left: 4px solid var(--g500);">
+    <div class="card">
       <div class="icon">⏩</div>
       <h3>/devloop-continue</h3>
-      <p>Resume a workflow from where it left off. The orchestrator reads the saved state and picks up at the right phase.</p>
+      <p>Resume from saved state. The orchestrator reads STATE.md, infers the current phase, and continues the workflow at the right place.</p>
     </div>
-  </div>
-  <div class="cards cards-3" style="margin-top: 0;">
     <div class="card">
       <div class="icon">📊</div>
       <h3>/devloop-status</h3>
-      <p>See current phase, active bundle, progress, and what happens next. Read-only — no workflow actions taken.</p>
-    </div>
-    <div class="card">
-      <div class="icon">📝</div>
-      <h3>/devloop-bulk-start</h3>
-      <p>Like bulk-yolo but with approval steps. Provide structured input, and the workflow asks you to confirm at each phase.</p>
+      <p>Read-only inspection. Shows current phase, active bundle, progress, completion percentage, and what happens next. No workflow changes.</p>
     </div>
     <div class="card">
       <div class="icon">🧹</div>
       <h3>/devloop-cleanup</h3>
-      <p>Clean up transient artifacts or perform a full reset. Source assets and releases are always preserved.</p>
+      <p>Remove transient artifacts or reset the workflow. Source assets and releases are always preserved. Useful when retrying from a checkpoint.</p>
     </div>
   </div>
 </div>
 
-<!-- Slide 16: End -->
-<div class="slide slide-title" id="s16">
+<!-- Slide 14: Closing -->
+<div class="slide slide-title" id="s14">
   <h1>DevLoop</h1>
-  <p>Document-driven. Phase-gated. Fully traceable.<br>From idea to tested, released software.</p>
-  <div class="badge">POWERED BY CLAUDE CODE</div>
+  <p>Not an agent swarm. A governed engineering system that delegates work to agents while preserving control, evidence, and release discipline.</p>
+  <div class="badge">SE 3.0 · HUMAN-ORCHESTRATED · FULLY AUDITABLE</div>
 </div>
 
 <!-- Navigation -->
 <div class="nav">
-  <button onclick="prev()" id="btnPrev">←</button>
-  <button onclick="next()" id="btnNext">→</button>
+  <button onclick="prev()" id="btnPrev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <button onclick="next()" id="btnNext"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
 </div>
-<div class="slide-footer" style="display:none"><span class="footer-title">DevLoop Orchestrator</span><span class="footer-page"><span id="current">1</span> / <span id="total">14</span></span></div>
+<div class="slide-footer" style="display:none"><span class="footer-title">DevLoop: Agentic Software Engineering</span><span class="footer-page"><span id="current">1</span> / <span id="total">11</span></span></div>
 
 <script>
   let idx = 0;
-  const SKIP = 2; // title + agenda are unnumbered
+  const SKIP = 2;
   const slides = document.querySelectorAll('.slide');
   const total = slides.length;
   const footer = document.querySelector('.slide-footer');

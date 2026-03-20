@@ -91,3 +91,4 @@ Before handoff (Implementation check), confirm:
 4. Bash scripts (if any) pass: `shellcheck scripts/*.sh`
 5. No regressions in existing tests.
 6. Validation commands from `docs/PLN.md` all exit with code 0.
+7. **Startup validation** (if the bundle produces or modifies a runnable application): run the application start command from `docs/PLN.md` in a way that confirms the process launches without import errors or crashes (e.g. launch with a short timeout or send a quit signal). If the start command fails, fix the issue before handing off. Record the validated start command in a comment at the bottom of `docs/PLN.md` under `## Validated Start Command` so downstream agents use the exact working command.

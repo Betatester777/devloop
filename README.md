@@ -91,7 +91,7 @@ graph TB
         State["devloop-state skill"]
     end
 
-    Orchestrator -->|"① Requirements"| PM["📋 Product Manager"]
+    Orchestrator -->|"① Requirements"| PM["📋 Requirements Engineer"]
     Orchestrator -->|"② Architecture"| SA["🏗️ Software Architect"]
     Orchestrator -->|"③ Planning"| TP["📐 Task Planner"]
     Orchestrator -->|"④ Implementation"| SD["💻 Software Developer"]
@@ -113,7 +113,7 @@ graph TB
 | Agent | Phase | Primary Output |
 |---|---|---|
 | `devloop-orchestrator` | All | `docs/STATE.md` |
-| `product-manager` | Requirements | `docs/PRD.md` |
+| `requirements-engineer` | Requirements | `docs/PRD.md` |
 | `software-architect` | Architecture | `docs/ARC.md` |
 | `task-planner` | Planning | `docs/PLN.md` |
 | `software-developer` | Implementation | `src/`, `tests/` |
@@ -147,7 +147,7 @@ All user-facing prompts are handled by the **orchestrator**, not by sub-agents. 
 
 | Agent | User interaction (normal mode) | YOLO override |
 |---|---|---|
-| Product Manager | Orchestrator asks accept/improve after PRD | Auto-accept |
+| Requirements Engineer | Orchestrator asks accept/improve after PRD | Auto-accept |
 | Software Architect | Orchestrator asks accept/improve after design | Auto-accept |
 | Task Planner | Orchestrator asks bundle selection (if ambiguous) | Auto-select next unplanned bundle |
 | Software Developer | No prompts — implements and hands off | — |
@@ -177,7 +177,7 @@ graph LR
     end
 
     O["Orchestrator"] --> S1
-    PM["Product Manager"] --> S2
+    PM["Requirements Engineer"] --> S2
     TP["Task Planner"] --> S3
     ST["Software Tester"] --> S4
     RP["Review Presenter"] --> S5
@@ -260,7 +260,7 @@ graph TD
         BASE["BASE_CONFIG.md"]
     end
 
-    subgraph "Product Manager"
+    subgraph "Requirements Engineer"
         PRD["docs/PRD.md"]
     end
 

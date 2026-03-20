@@ -11,7 +11,7 @@ Structure raw user input and constraints into a well-formed Product Requirements
 
 ## Trigger
 
-Invoked by the product manager during the Requirements phase.
+Invoked by the requirements engineer during the Requirements phase.
 
 ## Inputs
 
