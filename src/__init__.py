@@ -1,1 +1,0 @@
-# Delicious Memory — application package
