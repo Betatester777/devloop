@@ -1,6 +1,7 @@
 {
   "permissions": {
     "allow": [
+      "Edit",
       "Read(//home/ingo/.pyenv/versions/3.10.15/bin/**)",
       "Bash(/home/ingo/.pyenv/versions/3.10.15/bin/pip install:*)",
       "Bash(ruff check:*)",
@@ -14,7 +15,9 @@
       "Bash(google-chrome --headless --disable-gpu --print-to-pdf=\"/home/ingo/projects/devloop/docs/presentation.pdf\" --no-margins \"file:///home/ingo/projects/devloop/docs/presentation.html\")",
       "Bash(google-chrome --headless --disable-gpu --print-to-pdf=\"/home/ingo/projects/devloop/docs/presentation.pdf\" --no-margins --landscape \"file:///home/ingo/projects/devloop/docs/presentation.html\")",
       "Bash(source .venv/bin/activate)",
-      "Bash(pytest tests/ -v)"
+      "Bash(pytest tests/ -v)",
+      "Bash(git status:*)",
+      "Bash(git checkout:*)"
     ],
     "additionalDirectories": [
       "/home/ingo/projects/devloop/.claude/agents"

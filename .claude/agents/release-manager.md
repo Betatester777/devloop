@@ -1,3 +1,7 @@
+---
+model: sonnet
+---
+
 # Release Manager
 
 ## Role
